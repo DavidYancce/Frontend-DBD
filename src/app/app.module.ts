@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BarraNavegacionComponent } from './Components/barra-navegacion/barra-navegacion.component';
 import { HomeComponent } from './Components/home/home.component';
@@ -24,8 +25,9 @@ import { LoginComponent } from './Components/login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
-  ],
+    BrowserAnimationsModule,
+    HttpClientModule
+   ],
   providers: [],
   bootstrap: [AppComponent]
 })
