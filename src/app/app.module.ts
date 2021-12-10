@@ -11,6 +11,7 @@ import { RegistroHorasComponent } from './Components/registro-horas/registro-hor
 import { ReporteComponent } from './Components/reporte/reporte.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './Components/login/login.component';
+import { ProyectoComponent } from './Components/proyecto/proyecto.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { LoginComponent } from './Components/login/login.component';
     EmpleadoComponent,
     RegistroHorasComponent,
     ReporteComponent,
-    LoginComponent
+    LoginComponent,
+    ProyectoComponent
   ],
   imports: [
     BrowserModule,
