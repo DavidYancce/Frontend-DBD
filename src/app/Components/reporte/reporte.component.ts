@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../../ApiService";
-import {FiltrosBE, Proyecto, RegEmpleadoXProyecto} from "../../model";
+import {FiltrosBE, Proyecto, RangoFechas, RegEmpleadoXProyecto, RegHorasXProyecto} from "../../model";
 
 @Component({
   selector: 'app-reporte',
@@ -19,6 +19,11 @@ export class ReporteComponent implements OnInit {
     fechaFin: ""
   };
   listaRegistros: RegEmpleadoXProyecto[] = [];
+  rangFechas: RangoFechas = {
+    fechaInicio: "",
+    fechaFin: ""
+  };
+  regsHP: RegHorasXProyecto[] = [];
   constructor(private service: ApiService) { }
 
   ngOnInit(): void {
@@ -42,6 +47,16 @@ export class ReporteComponent implements OnInit {
     this.service.obtenerRegsEmpleadoXProyecto(proyecto).subscribe((data)=>{
       console.log(proyecto);
       this.listaRegistros = data;
+      console.log(data);
+    });
+  }
+  obtenerRegsHorasXProyecto(): void{
+    let fechas: RangoFechas ={
+      fechaInicio: this.rangFechas.fechaInicio,
+      fechaFin: this.rangFechas.fechaFin
+    }
+    this.service.obtenerRegsHorasXProyecto(fechas).subscribe((data)=>{
+      this.regsHP = data;
       console.log(data);
     });
   }
