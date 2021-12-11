@@ -41,7 +41,7 @@ export class Actividad{
   planificado = 0;
 }
 export class Empleado{
-  DNI = "";
+  dni = "";
   nombre1 = "";
   nombre2 = "";
   apellidoPaterno = "";
