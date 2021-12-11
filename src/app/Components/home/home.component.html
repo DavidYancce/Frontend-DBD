@@ -67,9 +67,25 @@
   <div class="row pt-3 pb-3">
     <div class="col-6">
       <select class="form-select" aria-label="Seleccione algo">
-        <option *ngFor="let jefeP of jefesProyecto" > {{jefeP.nombreCompleto}} </option>
+        <option *ngFor="let jefeP of jefesProyecto" [value]="jefeP.dni"> {{jefeP.nombreCompleto}} </option>
       </select>
     </div>
+  </div>
+  <div class="col-6">
+    <select class="form-select" aria-label="Seleccione sexoOoOO">
+      <option value="">Sexo</option>
+      <option value="Masculino">Masculino </option>
+      <option value="Femenino">Femenino </option>
+    </select>
+  </div>
+  <div class="col-6">
+    <select class="form-select" aria-label="Seleccione estado de proyecto">
+      <option value="">Estado de proyecto</option>
+      <option value="FN">Finalizado</option>
+      <option value="ED">En desarrollo</option>
+      <option value="EG">En garantía</option>
+      <option value="NI">No iniciado</option>
+    </select>
   </div>
 
   <table class="table">

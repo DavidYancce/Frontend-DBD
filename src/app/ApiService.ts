@@ -68,4 +68,11 @@ export class ApiService {
         catchError(this.errorHandl)
       );
   }
+  registrarHoraNoPlanificado(actividad : Actividad):Observable<Actividad>{
+    return this.http.post<Actividad>(this.baseurl + 'insertar-actividad',actividad , this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    )
+  }
 }

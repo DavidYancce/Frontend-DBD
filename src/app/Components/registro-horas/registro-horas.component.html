@@ -57,37 +57,37 @@
         <div class="row">
             <div class="input-group mb-3">
                 <span class="input-group-text" id="project">Proyecto</span>
-              <select class="form-select">
+              <select class="form-select" [(ngModel)]="idProyecto">
                 <option selected>Elija una opción...</option>
-                <option *ngFor="let item of listaProyectos">{{item.nombreProyecto}}</option>
+                <option *ngFor="let item of listaProyectos" [value]="item.idProyecto">{{item.nombreProyecto}}</option>
               </select>
               </div>
         </div>
         <div class="row">
             <div class="input-group mb-3">
-                <span class="input-group-text" id="activity">Actividad</span>
-              <select class="form-select">
+                <span class="input-group-text" id="activity" >Actividad</span>
+              <select class="form-select" [(ngModel)]="this.idActividad">
                 <option selected>Elija una opción...</option>
-                <option *ngFor="let item of listaActividades">{{item.descripcion}}</option>
+                <option *ngFor="let item of listaActividades" [value]="item.idActividad" >{{item.descripcion}}</option>
               </select>
               </div>
         </div>
         <div class="row">
             <div class="input-group mb-3">
                 <span class="input-group-text" id="Algo">Fecha</span>
-                <input type="text" class="form-control" />
+                <input type="text" class="form-control"  [(ngModel)]="this.fechaIngresada" />
               </div>
         </div>
         <div class="row">
             <div class="input-group mb-3">
-                <span class="input-group-text" id="Algo">Teimpo requerido</span>
-                <input type="text" class="form-control" />
+                <span class="input-group-text" id="Algo">Tiempo requerido</span>
+                <input type="text" class="form-control"  [(ngModel)]="this.tiempoRequerido"/>
               </div>
         </div>
         <div class="row">
             <div class="input-group mb-3">
                 <span class="input-group-text" id="Algo">Algo</span>
-                <textarea class="form-control" ></textarea>
+                <textarea class="form-control" [(ngModel)]="this.descripcion"></textarea>
               </div>
         </div>
 
@@ -100,7 +100,7 @@
         >
           Close
         </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" (click)="registrarNoPlanificado()">Save changes</button>
       </div>
     </div>
   </div>

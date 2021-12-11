@@ -33,7 +33,7 @@ export class Actividad{
   tiempoRequerido = 0;
   descripcion = "";
   idProyecto = 0;
-  dniEjecutor = 0;
+  dniEjecutor = "";
   dniPlanificador = "";
   fechaPlanificada = "";
   tiempoPlanificado = 0;
