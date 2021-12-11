@@ -40,3 +40,20 @@ export class Actividad{
   idActividad = 0;
   planificado = 0;
 }
+export class Empleado{
+  DNI = "";
+  nombre1 = "";
+  nombre2 = "";
+  apellidoPaterno = "";
+  apellidoMaterno = "";
+  nombreCompleto = "";
+  correoEmpresarial = "";
+  contrasenia = "";
+  telefono = "";
+  genero = "";
+  estado = "";
+  direccion = "";
+  fechaNacimiento = "";
+  idCargo = 0;
+  sueldo = 0;
+}

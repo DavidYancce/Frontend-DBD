@@ -174,17 +174,13 @@
               </div>
         </div>
         <div class="row">
-            <div class="col-lg-10">
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="Algo">Jefe de proyecto</span>
-                    <select class="form-select" id="inputGroupSelect01">
-                        <option selected>Choose...</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                      </select>
-                  </div>
-            </div>
+                  <span class="input-group-text" id="Algo">Jefe de proyecto</span>
+                  <select class="form-select">
+                    <option selected>Elija una opción...</option>
+                    <option *ngFor="let item of listaJefes">{{item.nombreCompleto}}</option>
+                  </select>
+                </div>
             <div class="col-lg-2">
                 <i class="bi bi-person-plus-fill"></i>
             </div>
@@ -227,11 +223,12 @@
             <div class="input-group mb-3">
                 <span class="input-group-text" id="Algo">Estado del proyecto</span>
                 <select class="form-select" id="inputGroupSelect01">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
+                  <option selected>Elija una opción...</option>
+                  <option value="1">No iniciado</option>
+                  <option value="2">En desarrollo</option>
+                  <option value="3">Finalizado</option>
+                  <option value="4">En garantía</option>
+                </select>
               </div>
         </div>
 
@@ -274,25 +271,21 @@
 
         <div class="row">
             <div class="input-group mb-3">
-                <span class="input-group-text" id="Algo">Proyecto</span>
-                <select class="form-select" id="inputGroupSelect01">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-              </div>
+              <span class="input-group-text" id="Algo">Proyecto</span>
+              <select class="form-select">
+                <option selected>Elija una opción...</option>
+                <option *ngFor="let item of listaProyectos">{{item.nombreProyecto}}</option>
+              </select>
+            </div>
         </div>
 
         <div class="row">
             <div class="input-group mb-3">
-                <span class="input-group-text" id="Algo">Empleado</span>
-                <select class="form-select" id="inputGroupSelect01">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
+              <span class="input-group-text" id="Algo">Empleado</span>
+              <select class="form-select">
+                <option selected>Elija una opción...</option>
+                <option *ngFor="let item of listaOperarios">{{item.nombreCompleto}}</option>
+              </select>
               </div>
         </div>
         <div class="row">

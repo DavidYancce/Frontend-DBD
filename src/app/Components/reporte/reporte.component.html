@@ -15,7 +15,7 @@
       class="btn btn-primary"
       id="btn1"
       data-bs-toggle="modal"
-      data-bs-target=""
+      data-bs-target="#HRPP"
     >
       Horas reportadas por proyecto
     </button>
@@ -38,18 +38,12 @@
       Horas planificadas vs Horas reportadas por proyecto
     </button>
   </div>
-  <!-- Modal -->
-  <div
-    class="modal fade"
-    id="HREP"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
+  <!-- Modal HORAS REPORTADAS POR PROYECTO-->
+  <div class="modal fade" id="HRPP" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="" style="font-size: 14px">Dashboard - Horas registradas de empleado por proyecto</h5>
+          <h5 class="modal-title" id="" style="font-size: 14px">Dashboard - Horas reportadas por proyecto</h5>
           <button
             type="button"
             class="btn-close"
@@ -59,13 +53,13 @@
         </div>
         <div class="modal-body">
           <h2 align="center">Horas registradas de empleado por proyecto</h2>
-        <!--  <div class="row">
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="Algo">Algo</span>
-              <input type="text" class="form-control" />
+          <!--  <div class="row">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="Algo">Algo</span>
+                <input type="text" class="form-control" />
+              </div>
             </div>
-          </div>
-        -->
+          -->
           <div class="row">
             <div class="col-lg-10">
               <div class="input-group mb-3">
@@ -115,4 +109,77 @@
         </div>
       </div>
     </div>
+  </div>
+  <!-- Modal HORAS REPORTADAS EMPLEADO X PROYECTO-->
+  <div class="modal fade" id="HREP" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="" style="font-size: 14px">Dashboard - Horas registradas de empleado por proyecto</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <h2 align="center">Horas registradas de empleado por proyecto</h2>
+          <!--  <div class="row">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="Algo">Algo</span>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          -->
+          <div class="row">
+            <div class="col-lg-10">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="proyecto">Proyecto</span>
+                <select [(ngModel)]="proyectoSeleccionado" required class="form-select" id="inputGroupSelect01">
+                  <option selected>Elija una opción...</option>
+                  <option *ngFor="let item of listaProyectos" [ngValue]="item">{{item.nombreProyecto}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-2">
+              <button
+                (click)="obtenerRegsEmpleadoXProyecto()"
+                type="button"
+                class="btn btn-secondary"
+                id="consultar"
+              >
+                Consultar
+              </button>
+            </div>
+          </div>
+          <table class="table">
+            <thead class="table-dark">
+            <tr>
+              <th scope="col">Empleado</th>
+              <th scope="col">Tiempo de esfuerzo</th>
+              <th scope="col">Proyecto</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of listaRegistros">
+              <td>{{item.empleado}}</td>
+              <td>{{item.tiempoRequerido}}</td>
+              <td>{{item.proyecto}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-dismiss="modal"
+          >
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
