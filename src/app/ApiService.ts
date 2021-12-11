@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {retry, catchError} from "rxjs/operators";
-import {FiltrosBE, RegTablaEmp} from "./model";
+import {FiltrosBE, Proyecto, RegEmpleadoXProyecto, RegTablaEmp} from "./model";
 @Injectable({
   providedIn: 'root'
 })
@@ -33,5 +33,18 @@ export class ApiService {
         catchError(this.errorHandl)
       );
   }
-
+  obtenerProyectos(): Observable<Proyecto[]>{
+    return this.http.post<Proyecto[]>(this.baseurl + 'obtener-proyectos', this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
+  obtenerRegsEmpleadoXProyecto(data: Proyecto): Observable<RegEmpleadoXProyecto[]>{
+    return this.http.post<RegEmpleadoXProyecto[]>(this.baseurl + 'horas-empleado-proyecto', data, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
 }

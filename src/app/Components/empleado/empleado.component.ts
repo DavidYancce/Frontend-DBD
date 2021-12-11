@@ -30,9 +30,7 @@ export class EmpleadoComponent implements OnInit {
       rol: this.filtro.rol
     };
     this.service.buscarEmpleado(filtros).subscribe((data)=>{
-      console.log(data);
       this.listaRegistros = data;
-      console.log(data);
     });
   }
 }
