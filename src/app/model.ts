@@ -57,3 +57,11 @@ export class Empleado{
   idCargo = 0;
   sueldo = 0;
 }
+export class RangoFechas{
+  fechaInicio = "";
+  fechaFin = "";
+}
+export class RegHorasXProyecto{
+  nombreProyecto = "";
+  sumaHoras = 0;
+}

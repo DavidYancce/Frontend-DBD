@@ -2,7 +2,16 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {retry, catchError} from "rxjs/operators";
-import {Actividad, Empleado, FiltrosBE, Proyecto, RegEmpleadoXProyecto, RegTablaEmp} from "./model";
+import {
+  Actividad,
+  Empleado,
+  FiltrosBE,
+  Proyecto,
+  RangoFechas,
+  RegEmpleadoXProyecto,
+  RegHorasXProyecto,
+  RegTablaEmp
+} from "./model";
 @Injectable({
   providedIn: 'root'
 })
@@ -68,11 +77,28 @@ export class ApiService {
         catchError(this.errorHandl)
       );
   }
+
   registrarHoraNoPlanificado(actividad : Actividad):Observable<Actividad>{
     return this.http.post<Actividad>(this.baseurl + 'insertar-actividad',actividad , this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.errorHandl)
-    )
+    );
+  }
+
+  obtenerRegsHorasXProyecto(data: RangoFechas): Observable<RegHorasXProyecto[]>{
+    return this.http.post<RegHorasXProyecto[]>(this.baseurl + 'obtener-horas-registradas-proyecto', data, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
+  obtenerColaboradores(data: Proyecto): Observable<Empleado[]>{
+    return this.http.post<Empleado[]>(this.baseurl + 'obtener-colaboradores', data, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+
   }
 }

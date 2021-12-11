@@ -52,7 +52,7 @@
           ></button>
         </div>
         <div class="modal-body">
-          <h2 align="center">Horas registradas de empleado por proyecto</h2>
+          <h2 align="center">Horas reportadas por proyecto</h2>
           <!--  <div class="row">
               <div class="input-group mb-3">
                 <span class="input-group-text" id="Algo">Algo</span>
@@ -61,21 +61,23 @@
             </div>
           -->
           <div class="row">
-            <div class="col-lg-10">
+            <div class="col-lg-5">
               <div class="input-group mb-3">
-                <span class="input-group-text" id="proyecto">Proyecto</span>
-                <select [(ngModel)]="proyectoSeleccionado" required class="form-select" id="inputGroupSelect01">
-                  <option selected>Elija una opción...</option>
-                  <option *ngFor="let item of listaProyectos" [ngValue]="item">{{item.nombreProyecto}}</option>
-                </select>
+                <span class="input-group-text">Fecha Inicio</span>
+                <input [(ngModel)]="this.rangFechas.fechaInicio" type="date" min="1990-01-01" max="2022-12-31" name="fechainicio">
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="input-group mb-3">
+                <span class="input-group-text">Fecha Fin</span>
+                <input [(ngModel)]="this.rangFechas.fechaFin" type="date" min="1990-01-01" max="2022-12-31" name="fechafin">
               </div>
             </div>
             <div class="col-2">
               <button
-                (click)="obtenerRegsEmpleadoXProyecto()"
+                (click)="obtenerRegsHorasXProyecto()"
                 type="button"
                 class="btn btn-secondary"
-                id="consultar"
               >
                 Consultar
               </button>
@@ -84,16 +86,14 @@
           <table class="table">
             <thead class="table-dark">
             <tr>
-              <th scope="col">Empleado</th>
-              <th scope="col">Tiempo de esfuerzo</th>
               <th scope="col">Proyecto</th>
+              <th scope="col">Suma de horas</th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let item of listaRegistros">
-              <td>{{item.empleado}}</td>
-              <td>{{item.tiempoRequerido}}</td>
-              <td>{{item.proyecto}}</td>
+            <tr *ngFor="let item of regsHP">
+              <td>{{item.nombreProyecto}}</td>
+              <td>{{item.sumaHoras}}</td>
             </tr>
             </tbody>
           </table>
@@ -136,7 +136,7 @@
             <div class="col-lg-10">
               <div class="input-group mb-3">
                 <span class="input-group-text" id="proyecto">Proyecto</span>
-                <select [(ngModel)]="proyectoSeleccionado" required class="form-select" id="inputGroupSelect01">
+                <select [(ngModel)]="proyectoSeleccionado" class="form-select" id="inputGroupSelect01">
                   <option selected>Elija una opción...</option>
                   <option *ngFor="let item of listaProyectos" [ngValue]="item">{{item.nombreProyecto}}</option>
                 </select>
