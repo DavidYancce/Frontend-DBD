@@ -1,47 +1,46 @@
 <div class="px-5 py-5">
-    <p>home works!</p>
     <!-- Button trigger modal -->
     <div class="row">
       <div class="col-lg-6">
         <div class="input-group mb-3">
-          <span class="input-group-text" id="numero1">Numero 1</span>
-          <input type="text" class="form-control" />
+          <span class="input-group-text" id="name">Nombre</span>
+          <input [(ngModel)]="this.filtro.nombreCompleto" type="text" class="form-control" />
         </div>
       </div>
       <div class="col-lg-3">
         <div class="input-group mb-3">
-          <span class="input-group-text" id="numero2">Algo</span>
-          <input type="text" class="form-control" />
+          <span class="input-group-text" id="rol">Rol</span>
+          <input [(ngModel)]="this.filtro.rol" type="text" class="form-control" />
         </div>
       </div>
       <div class="col-lg-3">
         <div class="input-group mb-3">
-          <span class="input-group-text" id="numero2">Algo</span>
-          <input type="text" class="form-control" />
+          <span class="input-group-text" id="dni">DNI</span>
+          <input [(ngModel)]="this.filtro.dni" type="text" class="form-control" />
         </div>
       </div>
     </div>
-  
+
     <div class="row">
         <div class="col-lg-6">
           <div class="input-group mb-3">
-            <span class="input-group-text" id="numero1">Numero 1</span>
-            <input type="text" class="form-control" />
+            <span class="input-group-text" id="appat">Apellido paterno</span>
+            <input [(ngModel)]="this.filtro.apellidoPaterno" type="text" class="form-control" />
           </div>
         </div>
         <div class="col-lg-3">
           <div class="input-group mb-3">
-            <span class="input-group-text" id="numero2">Algo</span>
-            <input type="text" class="form-control" />
+            <span class="input-group-text" id="apmat">Apellido materno</span>
+            <input [(ngModel)]="this.filtro.apellidoMaterno" type="text" class="form-control" />
           </div>
         </div>
         <div class="col-lg-3">
           <div class="d-grid gap-2">
-            <button type="button" name="" id="" class="btn btn-primary">Buscar</button>
+            <button (click)="buscarEmpleado()" type="button" name="" id="" class="btn btn-primary">Buscar</button>
           </div>
         </div>
       </div>
-  
+
     <table class="table">
       <thead class="table-dark">
         <tr>
@@ -55,66 +54,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Algo</td>
-          <td>Algo</td>
-          <td>Algo</td>
-          <td>Algo</td>
-          <td>Algo</td>
-          <td>Algo</td>
-          
+        <tr *ngFor="let item of listaRegistros">
+          <td>{{item.dni}}</td>
+          <td>{{item.nombre}}</td>
+          <td>{{item.apellidos}}</td>
+          <td>{{item.rol}}</td>
+          <td>{{item.telefono}}</td>
+          <td>{{item.correoEmpresarial}}</td>
+          <td>{{item.nombreProyecto}}</td>
         </tr>
-        <tr>
-            <th scope="row">1</th>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            
-          </tr>
       </tbody>
     </table>
     <button
@@ -227,4 +175,3 @@
     </div>
   </div>
 </div>
-  
