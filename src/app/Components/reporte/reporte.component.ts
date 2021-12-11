@@ -45,9 +45,7 @@ export class ReporteComponent implements OnInit {
       fechaFin: this.proyectoSeleccionado.fechaFin
     }
     this.service.obtenerRegsEmpleadoXProyecto(proyecto).subscribe((data)=>{
-      console.log(proyecto);
       this.listaRegistros = data;
-      console.log(data);
     });
   }
   obtenerRegsHorasXProyecto(): void{
@@ -57,7 +55,6 @@ export class ReporteComponent implements OnInit {
     }
     this.service.obtenerRegsHorasXProyecto(fechas).subscribe((data)=>{
       this.regsHP = data;
-      console.log(data);
     });
   }
 }

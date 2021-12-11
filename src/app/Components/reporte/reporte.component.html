@@ -136,7 +136,7 @@
             <div class="col-lg-10">
               <div class="input-group mb-3">
                 <span class="input-group-text" id="proyecto">Proyecto</span>
-                <select [(ngModel)]="proyectoSeleccionado" required class="form-select" id="inputGroupSelect01">
+                <select [(ngModel)]="proyectoSeleccionado" class="form-select" id="inputGroupSelect01">
                   <option selected>Elija una opción...</option>
                   <option *ngFor="let item of listaProyectos" [ngValue]="item">{{item.nombreProyecto}}</option>
                 </select>

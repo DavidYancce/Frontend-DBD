@@ -1,106 +1,139 @@
-<div class="px-5 py-5"><button
-    type="button"
-    class="btn btn-primary mb-3"
-    data-bs-toggle="modal"
-    data-bs-target="#exampleModal"
-    >
-    Registrar Horas
-    </button>
-    <table class="table">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">Algo</th>
-            <th scope="col">Algo</th>
-            <th scope="col">Algo</th>
-            <th scope="col">Algo</th>
-
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-            <td>Algo</td>
-          </tr>
-          <tr>
-              <td>Algo</td>
-              <td>Algo</td>
-              <td>Algo</td>
-              <td>Algo</td>
-            </tr>
-        </tbody>
-      </table>
-
-
+<div class="px-5 py-5">
+  <div class="row">
+    <div class="col-lg-2 mb-3">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reghoras">Registrar Horas</button>
+    </div>
+    <div class="col-lg-5 mb-3">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#planact">Planificar actividad</button>
+    </div>
+  </div>
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Algo</th>
+        <th scope="col">Algo</th>
+        <th scope="col">Algo</th>
+        <th scope="col">Algo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Algo</td>
+        <td>Algo</td>
+        <td>Algo</td>
+        <td>Algo</td>
+      </tr>
+      <tr>
+        <td>Algo</td>
+        <td>Algo</td>
+        <td>Algo</td>
+        <td>Algo</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-<!--  MODAL -->
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<!--  Modal REGISTRAR HORAS -->
+<div class="modal fade" id="reghoras" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="" style="font-size: 14px">Modal title</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <h3 class="modal-title" style="font-weight: bold">Registrar horas</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="row">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="project">Proyecto</span>
-              <select class="form-select">
-                <option selected>Elija una opción...</option>
-                <option *ngFor="let item of listaProyectos">{{item.nombreProyecto}}</option>
-              </select>
-              </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="project">Proyecto</span>
+            <select class="form-select">
+              <option selected>Elija una opción...</option>
+              <option *ngFor="let item of listaProyectos">{{item.nombreProyecto}}</option>
+            </select>
+          </div>
         </div>
         <div class="row">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="activity">Actividad</span>
-              <select class="form-select">
-                <option selected>Elija una opción...</option>
-                <option *ngFor="let item of listaActividades">{{item.descripcion}}</option>
-              </select>
-              </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="activity">Actividad</span>
+            <select class="form-select">
+              <option selected>Elija una opción...</option>
+              <option *ngFor="let item of listaActividades">{{item.descripcion}}</option>
+            </select>
+          </div>
         </div>
         <div class="row">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="Algo">Fecha</span>
-                <input type="text" class="form-control" />
-              </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="Algo">Fecha</span>
+            <input type="text" class="form-control" />
+          </div>
         </div>
         <div class="row">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="Algo">Teimpo requerido</span>
-                <input type="text" class="form-control" />
-              </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="Algo">Tiempo requerido</span>
+            <input type="text" class="form-control" />
+          </div>
         </div>
         <div class="row">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="Algo">Algo</span>
-                <textarea class="form-control" ></textarea>
-              </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="Algo">Descripción de la tarea</span>
+            <textarea class="form-control" ></textarea>
+          </div>
         </div>
-
       </div>
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal"
-        >
-          Close
-        </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Registrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  Modal PLANIFICAR ACTIVIDAD -->
+<div class="modal fade" id="planact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" style="font-weight: bold">Planificar actividad</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="input-group mb-3">
+            <span class="input-group-text">Proyecto</span>
+            <select (change)="obtenerColaboradores()" [(ngModel)]="proyecto" required class="form-select">
+              <option>Elija una opción...</option>
+              <option *ngFor="let item of listaProyectos" [ngValue]="item">{{item.nombreProyecto}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="activity">Colaborador</span>
+            <select class="form-select">
+              <option selected>Elija una opción...</option>
+              <option *ngFor="let item of listaColaboradores">{{item.nombreCompleto}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="Algo">Fecha de fin planificada</span>
+            <input type="text" class="form-control" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="Algo">Tiempo planificado</span>
+            <input type="text" class="form-control" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="Algo">Descripción</span>
+            <textarea class="form-control" ></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Registrar</button>
       </div>
     </div>
   </div>

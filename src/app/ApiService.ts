@@ -84,4 +84,11 @@ export class ApiService {
         catchError(this.errorHandl)
       );
   }
+  obtenerColaboradores(data: Proyecto): Observable<Empleado[]>{
+    return this.http.post<Empleado[]>(this.baseurl + 'obtener-colaboradores', data, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
 }
