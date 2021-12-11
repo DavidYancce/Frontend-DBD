@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ApiService} from "../../ApiService";
+import {Actividad, Proyecto} from "../../model";
+import {ProyectoComponent} from "../proyecto/proyecto.component";
 
 @Component({
   selector: 'app-registro-horas',
@@ -6,10 +9,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registro-horas.component.scss']
 })
 export class RegistroHorasComponent implements OnInit {
-
-  constructor() { }
+  listaActividades: Actividad[] = [];
+  listaProyectos: Proyecto[] = [];
+  constructor(private service: ApiService) { }
 
   ngOnInit(): void {
+    this.obtenerActividades(),
+    this.obtenerProyectos()
   }
-
+  obtenerActividades(): void{
+    this.service.obtenerActividades().subscribe((data)=>{
+      this.listaActividades = data;
+      console.log(this.listaActividades)
+    });
+  }
+  obtenerProyectos(): void{
+    this.service.obtenerProyectos().subscribe((data)=>{
+      this.listaProyectos = data;
+    });
+  }
 }

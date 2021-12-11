@@ -28,3 +28,15 @@ export class RegEmpleadoXProyecto{
   tiempoRequerido = 0;
   proyecto = "";
 }
+export class Actividad{
+  fechaIngresada = "";
+  tiempoRequerido = 0;
+  descripcion = "";
+  idProyecto = 0;
+  dniEjecutor = 0;
+  dniPlanificador = "";
+  fechaPlanificada = "";
+  tiempoPlanificado = 0;
+  idActividad = 0;
+  planificado = 0;
+}

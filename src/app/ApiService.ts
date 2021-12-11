@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {retry, catchError} from "rxjs/operators";
-import {FiltrosBE, Proyecto, RegEmpleadoXProyecto, RegTablaEmp} from "./model";
+import {Actividad, FiltrosBE, Proyecto, RegEmpleadoXProyecto, RegTablaEmp} from "./model";
 @Injectable({
   providedIn: 'root'
 })
@@ -42,6 +42,13 @@ export class ApiService {
   }
   obtenerRegsEmpleadoXProyecto(data: Proyecto): Observable<RegEmpleadoXProyecto[]>{
     return this.http.post<RegEmpleadoXProyecto[]>(this.baseurl + 'horas-empleado-proyecto', data, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
+  obtenerActividades(): Observable<Actividad[]>{
+    return this.http.post<Actividad[]>(this.baseurl + 'obtener-actividades', this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)
