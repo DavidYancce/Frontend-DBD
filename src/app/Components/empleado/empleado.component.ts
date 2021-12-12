@@ -1,36 +1,71 @@
 import { Component, OnInit } from '@angular/core';
-import {ApiService} from "../../ApiService";
-import {FiltrosBE, RegTablaEmp} from "../../model";
-import {stringify} from "@angular/compiler/src/util";
+import { ApiService } from '../../ApiService';
+import { Empleado, FiltrosBE, RegTablaEmp } from '../../model';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-empleado',
   templateUrl: './empleado.component.html',
-  styleUrls: ['./empleado.component.scss']
+  styleUrls: ['./empleado.component.scss'],
 })
 export class EmpleadoComponent implements OnInit {
   filtro: FiltrosBE = {
-    dni: "",
-    nombreCompleto: "",
-    apellidoMaterno: "",
-    apellidoPaterno: "",
-    rol: ""
+    dni: '',
+    nombreCompleto: '',
+    apellidoMaterno: '',
+    apellidoPaterno: '',
+    rol: '',
+  };
+  empleado: Empleado = {
+    dni: '',
+    nombre1: '',
+    nombre2: '',
+    apellidoPaterno: '',
+    apellidoMaterno: '',
+    nombreCompleto: '',
+    correoEmpresarial: '',
+    contrasenia: '',
+    telefono: '',
+    genero: '',
+    estado: 'Contratado',
+    direccion: '',
+    fechaNacimiento: '',
+    idCargo: 0,
+    sueldo: 0,
   };
   listaRegistros: RegTablaEmp[] = [];
-  constructor(private service: ApiService) { }
+  listaCargos: any[] = [];
+  constructor(private service: ApiService) {}
 
   ngOnInit(): void {
+    this.service.obtenerCargos().subscribe((data) => {
+      this.listaCargos = data;
+      console.log(data);
+    });
+    this.buscarEmpleado();
+    this.obtenerOperarios();
   }
-  buscarEmpleado(): void{
+  buscarEmpleado(): void {
     let filtros: FiltrosBE = {
       dni: this.filtro.dni,
       nombreCompleto: this.filtro.nombreCompleto,
       apellidoPaterno: this.filtro.apellidoPaterno,
       apellidoMaterno: this.filtro.apellidoMaterno,
-      rol: this.filtro.rol
+      rol: this.filtro.rol,
     };
-    this.service.buscarEmpleado(filtros).subscribe((data)=>{
+    this.service.buscarEmpleado(filtros).subscribe((data) => {
       this.listaRegistros = data;
     });
+  }
+  insertarEmpleado():void {
+    this.service.insertarEmpleado(this.empleado).subscribe(data => {
+      console.log(data)
+    });
+   
+  }
+  obtenerOperarios():void {
+    this.service.obtenerOperarios().subscribe(data => {
+      console.log(data)
+    })
   }
 }

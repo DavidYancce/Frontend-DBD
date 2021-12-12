@@ -101,4 +101,18 @@ export class ApiService {
       );
 
   }
+  obtenerCargos(): Observable<any[]>{
+    return this.http.post<Empleado[]>(this.baseurl + 'obtener-cargos',null, this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );
+  }
+  insertarEmpleado(empleado: Empleado): Observable<Empleado>{
+    return this.http.post<Empleado>(this.baseurl + 'insertar-empleado',empleado, this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );
+  }
 }

@@ -1,83 +1,102 @@
 <div class="px-5 py-5">
-    <!-- Button trigger modal -->
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="name">Nombre</span>
-          <input [(ngModel)]="this.filtro.nombreCompleto" type="text" class="form-control" />
-        </div>
-      </div>
-      <div class="col-lg-3">
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="rol">Rol</span>
-          <input [(ngModel)]="this.filtro.rol" type="text" class="form-control" />
-        </div>
-      </div>
-      <div class="col-lg-3">
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="dni">DNI</span>
-          <input [(ngModel)]="this.filtro.dni" type="text" class="form-control" />
-        </div>
+  <!-- Button trigger modal -->
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="name">Nombre</span>
+        <input
+          [(ngModel)]="this.filtro.nombreCompleto"
+          type="text"
+          class="form-control"
+        />
       </div>
     </div>
-
-    <div class="row">
-        <div class="col-lg-6">
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="appat">Apellido paterno</span>
-            <input [(ngModel)]="this.filtro.apellidoPaterno" type="text" class="form-control" />
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="apmat">Apellido materno</span>
-            <input [(ngModel)]="this.filtro.apellidoMaterno" type="text" class="form-control" />
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="d-grid gap-2">
-            <button (click)="buscarEmpleado()" type="button" name="" id="" class="btn btn-primary">Buscar</button>
-          </div>
-        </div>
+    <div class="col-lg-3">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="rol">Rol</span>
+        <input [(ngModel)]="this.filtro.rol" type="text" class="form-control" />
       </div>
-
-    <table class="table">
-      <thead class="table-dark">
-        <tr>
-          <th scope="col">DNI</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellido</th>
-          <th scope="col">Rol</th>
-          <th scope="col">Telefono</th>
-          <th scope="col">Correo empresarial</th>
-          <th scope="col">Nombre del proyecto</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of listaRegistros">
-          <td>{{item.dni}}</td>
-          <td>{{item.nombre}}</td>
-          <td>{{item.apellidos}}</td>
-          <td>{{item.rol}}</td>
-          <td>{{item.telefono}}</td>
-          <td>{{item.correoEmpresarial}}</td>
-          <td>{{item.nombreProyecto}}</td>
-        </tr>
-      </tbody>
-    </table>
-    <button
-      type="button"
-      class="btn btn-primary"
-      data-bs-toggle="modal"
-      data-bs-target="#exampleModal"
-    >
-      Registrar empleado
-    </button>
+    </div>
+    <div class="col-lg-3">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="dni">DNI</span>
+        <input [(ngModel)]="this.filtro.dni" type="text" class="form-control" />
+      </div>
+    </div>
   </div>
 
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="appat">Apellido paterno</span>
+        <input
+          [(ngModel)]="this.filtro.apellidoPaterno"
+          type="text"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="apmat">Apellido materno</span>
+        <input
+          [(ngModel)]="this.filtro.apellidoMaterno"
+          type="text"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="d-grid gap-2">
+        <button
+          (click)="buscarEmpleado()"
+          type="button"
+          name=""
+          id=""
+          class="btn btn-primary"
+        >
+          Buscar
+        </button>
+      </div>
+    </div>
+  </div>
 
-  <!-- Modal -->
-  <div
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">DNI</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Rol</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Correo empresarial</th>
+        <th scope="col">Nombre del proyecto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listaRegistros">
+        <td>{{ item.dni }}</td>
+        <td>{{ item.nombre }}</td>
+        <td>{{ item.apellidos }}</td>
+        <td>{{ item.rol }}</td>
+        <td>{{ item.telefono }}</td>
+        <td>{{ item.correoEmpresarial }}</td>
+        <td>{{ item.nombreProyecto }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button
+    type="button"
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+  >
+    Registrar empleado
+  </button>
+</div>
+
+<!-- Modal -->
+<div
   class="modal fade"
   id="exampleModal"
   tabindex="-1"
@@ -87,7 +106,9 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="" style="font-size: 14px">Modal title</h5>
+        <h5 class="modal-title" id="" style="font-size: 14px">
+          Nuevo empleado
+        </h5>
         <button
           type="button"
           class="btn-close"
@@ -97,78 +118,139 @@
       </div>
       <div class="modal-body">
         <div class="row">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="Algo">Algo</span>
-                <input type="text" class="form-control" />
-              </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="Algo">Primer nombre</span>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="this.empleado.nombre1"
+            />
+          </div>
         </div>
         <div class="row">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="Algo">Algo</span>
-                <input type="text" class="form-control" />
-              </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="Algo">Segundo nombre</span>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="this.empleado.nombre2"
+            />
+          </div>
         </div>
         <div class="row">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="Algo">Algo</span>
-                <input type="text" class="form-control" />
-              </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="Algo">Apellido paterno</span>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="this.empleado.apellidoPaterno"
+            />
+          </div>
         </div>
         <div class="row">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="Algo">Algo</span>
-                <input type="text" class="form-control" />
-              </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="Algo">Apellido materno</span>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="this.empleado.apellidoMaterno"
+            />
+          </div>
         </div>
         <div class="row">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="Algo">Algo</span>
-                <input type="text" class="form-control" />
-              </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="Algo">DNI</span>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="this.empleado.dni"
+            />
+          </div>
         </div>
         <div class="row">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="Algo">SEXO</span>
-                <select class="form-select" aria-label="Seleccione sexo">
-                  <option value="Masculino">Masculino </option>
-                  <option value="Femenino">Femenino </option>
-                </select>
-              </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="Algo">Genero</span>
+            <select
+              class="form-select"
+              aria-label="Seleccione sexo"
+              [(ngModel)]="this.empleado.genero"
+            >
+              <option value="">Seleccione...</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Femenino">Femenino</option>
+            </select>
+          </div>
         </div>
         <div class="row">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="Algo">Algo</span>
-                <select class="form-select" id="inputGroupSelect01">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-              </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="Algo">Cargo</span>
+            <select
+              class="form-select"
+              id="inputGroupSelect01"
+              [(ngModel)]="this.empleado.idCargo"
+            >
+              <option value=0>Seleccione...</option>
+              <option
+                *ngFor="let cargo of listaCargos"
+                [value]="cargo.idCargo"
+              >
+                {{ cargo.nombreCargo }}
+              </option>
+            </select>
+          </div>
         </div>
         <div class="row">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="Algo">Algo</span>
-                <input type="text" class="form-control" />
-              </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text">Sueldo</span>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="this.empleado.sueldo"
+            />
+          </div>
         </div>
         <div class="row">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="Algo">Algo</span>
-                <input type="text" class="form-control" />
-              </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text">Telefono</span>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="this.empleado.telefono"
+            />
+          </div>
         </div>
-
+        <div class="row">
+          <div class="input-group mb-3">
+            <span class="input-group-text">Direccion</span>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="this.empleado.direccion"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-group mb-3">
+            <span class="input-group-text">Fecha de nacimiento</span>
+            <input
+              type="date"
+              class="form-control"
+              [(ngModel)]="this.empleado.fechaNacimiento"
+            />
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal"
-        >
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="insertarEmpleado()"
+        >
+          Insertar empleado
+        </button>
       </div>
     </div>
   </div>
