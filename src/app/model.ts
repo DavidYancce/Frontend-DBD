@@ -79,3 +79,11 @@ export class Cliente{
   pais = "";
   direccion = "";
 }
+export class RegPlanVSRep{
+  proyecto = "";
+  fechaReportada = "";
+  fechaPlanificada = "";
+  diferencia = "";
+  tiempoRegistrado = "";
+  tiempoPlanificado = "";
+}

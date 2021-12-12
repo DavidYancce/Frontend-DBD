@@ -9,7 +9,7 @@ import {
   Proyecto,
   RangoFechas,
   RegEmpleadoXProyecto, RegHorasXLinea,
-  RegHorasXProyecto,
+  RegHorasXProyecto, RegPlanVSRep,
   RegTablaEmp
 } from "./model";
 @Injectable({
@@ -120,6 +120,12 @@ export class ApiService {
         retry(1),
         catchError(this.errorHandl)
       );
-
+  }
+  obtenerRegsPlanVSRep(data: Proyecto): Observable<RegPlanVSRep[]>{
+    return this.http.post<RegPlanVSRep[]>(this.baseurl + 'proyecto-registrado-planificado', data, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
   }
 }

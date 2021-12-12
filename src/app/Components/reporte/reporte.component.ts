@@ -7,7 +7,7 @@ import {
   RangoFechas,
   RegEmpleadoXProyecto,
   RegHorasXLinea,
-  RegHorasXProyecto
+  RegHorasXProyecto, RegPlanVSRep
 } from "../../model";
 
 @Component({
@@ -37,6 +37,7 @@ export class ReporteComponent implements OnInit {
     fechaFin: ""
   };
   regsHP: RegHorasXProyecto[] = [];
+  regsPR: RegPlanVSRep[] = [];
   regsHL: RegHorasXLinea [] = [];
   constructor(private service: ApiService) { }
 
@@ -44,6 +45,7 @@ export class ReporteComponent implements OnInit {
     this.obtenerProyectos();
     this.obtenerLineas();
     this.obtenerRegsHorasXLinea();
+    this.obtenerRegsPlanVSRep();
   }
   obtenerProyectos(): void{
     this.service.obtenerProyectos().subscribe((data)=>{
@@ -86,6 +88,21 @@ export class ReporteComponent implements OnInit {
   obtenerLineas(): void{
     this.service.obtenerLineas().subscribe((data)=>{
       this.listaLineas = data;
+    });
+  }
+  obtenerRegsPlanVSRep(): void{
+    let proyecto: Proyecto ={
+      idProyecto: this.proyectoSeleccionado.idProyecto,
+      idLinea: this.proyectoSeleccionado.idLinea,
+      estado: this.proyectoSeleccionado.estado,
+      nombreProyecto: this.proyectoSeleccionado.nombreProyecto,
+      RUC: this.proyectoSeleccionado.RUC,
+      fechaInicio: this.proyectoSeleccionado.fechaInicio,
+      fechaFin: this.proyectoSeleccionado.fechaFin
+    }
+    this.service.obtenerRegsPlanVSRep(proyecto).subscribe((data)=>{
+      this.regsPR = data;
+      console.log(this.proyectoSeleccionado.nombreProyecto);
     });
   }
 }
