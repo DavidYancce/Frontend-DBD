@@ -83,11 +83,11 @@
         <div class="row">
           <div class="input-group mb-3">
             <span class="input-group-text" id="activity">Actividad</span>
-            <select class="form-select" [(ngModel)]="this.idActividad">
+            <select class="form-select" [(ngModel)]="actividadSeleccionada">
               <option selected>Elija una opción...</option>
               <option
                 *ngFor="let item of listaActividades"
-                [value]="item.idActividad"
+                [ngValue]="item"
               >
                 {{ item.descripcion }}
               </option>
@@ -116,10 +116,10 @@
         </div>
         <div class="row">
           <div class="input-group mb-3">
-            <span class="input-group-text" id="Algo">Algo</span>
-            <textarea
+            <span class="input-group-text" id="Algo">Descripcion de la tarea</span>
+            <textarea [disabled]="this.actividadSeleccionada.planificado==1"
               class="form-control"
-              [(ngModel)]="this.descripcion"
+              [(ngModel)]="this.actividadSeleccionada.descripcion"
             ></textarea>
           </div>
         </div>
@@ -131,14 +131,14 @@
           >
             Cerrar
           </button>
-          <button
+          <button *ngIf="this.actividadSeleccionada.planificado==null || this.actividadSeleccionada.planificado==0"
             type="button"
             class="btn btn-primary"
             (click)="registrarNoPlanificado()"
           >
             Registrar
           </button>
-          <button
+          <button *ngIf="this.actividadSeleccionada.planificado==1"
             type="button"
             class="btn btn-primary"
             (click)="actualizarActividad()"
@@ -216,7 +216,7 @@
           <div class="row">
             <div class="input-group mb-3">
               <span class="input-group-text" id="Algo">Descripción</span>
-              <textarea [disabled]="this.actividadPlanReg.planificado==1" class="form-control"  [(ngModel)]="this.descripcion2"></textarea>
+              <textarea class="form-control"  [(ngModel)]="this.descripcion2"></textarea>
             </div>
           </div>
         </div>
