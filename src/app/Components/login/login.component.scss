@@ -1,0 +1,52 @@
+.main {
+  position: relative;
+}
+
+.boton{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  background: #007CAB;
+  border-radius: 15px;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, 25%);
+  left: 20%;
+
+
+}
+
+.form-label {
+  color: #FFFFFF;
+}
+
+.form-control {
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: 0;
+}
+
+span {
+  border-radius: 0;
+}
+
+.btn {
+  font-size: 1.5em;
+  background: #F5BB1D;
+  width: 8em;
+  border-radius: 15px;
+}
+
+.display-5 {
+  color: #FFFFFF;
+}
+
+.footer {
+  background: black;
+}
