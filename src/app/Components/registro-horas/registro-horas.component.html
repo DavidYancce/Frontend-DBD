@@ -1,10 +1,24 @@
 <div class="px-5 py-5">
   <div class="row">
     <div class="col-lg-2 mb-3">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reghoras">Registrar Horas</button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#reghoras"
+      >
+        Registrar Horas
+      </button>
     </div>
     <div class="col-lg-5 mb-3">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#planact">Planificar actividad</button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#planact"
+      >
+        Planificar actividad
+      </button>
     </div>
   </div>
   <table class="table">
@@ -33,108 +47,183 @@
   </table>
 </div>
 <!--  Modal REGISTRAR HORAS -->
-<div class="modal fade" id="reghoras" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="reghoras"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title" style="font-weight: bold">Registrar horas</h3>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <div class="row">
           <div class="input-group mb-3">
             <span class="input-group-text" id="project">Proyecto</span>
-            <select class="form-select">
+            <select class="form-select" [(ngModel)]="idProyecto">
               <option selected>Elija una opción...</option>
-              <option *ngFor="let item of listaProyectos">{{item.nombreProyecto}}</option>
+              <option
+                *ngFor="let item of listaProyectos"
+                [value]="item.idProyecto"
+              >
+                {{ item.nombreProyecto }}
+              </option>
             </select>
           </div>
         </div>
         <div class="row">
           <div class="input-group mb-3">
             <span class="input-group-text" id="activity">Actividad</span>
-            <select class="form-select">
+            <select class="form-select" [(ngModel)]="this.idActividad">
               <option selected>Elija una opción...</option>
-              <option *ngFor="let item of listaActividades">{{item.descripcion}}</option>
+              <option
+                *ngFor="let item of listaActividades"
+                [value]="item.idActividad"
+              >
+                {{ item.descripcion }}
+              </option>
             </select>
           </div>
         </div>
         <div class="row">
           <div class="input-group mb-3">
             <span class="input-group-text" id="Algo">Fecha</span>
-            <input type="text" class="form-control" />
+            <input
+              type="date"
+              class="form-control"
+              [(ngModel)]="this.fechaIngresada"
+            />
           </div>
         </div>
         <div class="row">
           <div class="input-group mb-3">
             <span class="input-group-text" id="Algo">Tiempo requerido</span>
-            <input type="text" class="form-control" />
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="this.tiempoRequerido"
+            />
           </div>
         </div>
         <div class="row">
           <div class="input-group mb-3">
-            <span class="input-group-text" id="Algo">Descripción de la tarea</span>
-            <textarea class="form-control" ></textarea>
+            <span class="input-group-text" id="Algo">Algo</span>
+            <textarea
+              class="form-control"
+              [(ngModel)]="this.descripcion"
+            ></textarea>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Registrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!--  Modal PLANIFICAR ACTIVIDAD -->
-<div class="modal fade" id="planact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" style="font-weight: bold">Planificar actividad</h3>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="input-group mb-3">
-            <span class="input-group-text">Proyecto</span>
-            <select (change)="obtenerColaboradores()" [(ngModel)]="proyecto" required class="form-select">
-              <option>Elija una opción...</option>
-              <option *ngFor="let item of listaProyectos" [ngValue]="item">{{item.nombreProyecto}}</option>
-            </select>
-          </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cerrar
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="registrarNoPlanificado()"
+          >
+            Registrar
+          </button>
         </div>
-        <div class="row">
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="activity">Colaborador</span>
-            <select class="form-select">
-              <option selected>Elija una opción...</option>
-              <option *ngFor="let item of listaColaboradores">{{item.nombreCompleto}}</option>
-            </select>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="Algo">Fecha de fin planificada</span>
-            <input type="text" class="form-control" />
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="Algo">Tiempo planificado</span>
-            <input type="text" class="form-control" />
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="Algo">Descripción</span>
-            <textarea class="form-control" ></textarea>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Registrar</button>
       </div>
     </div>
   </div>
-</div>
+  </div>
+  <!--  Modal PLANIFICAR ACTIVIDAD -->
+  <div
+    class="modal fade"
+    id="planact"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" style="font-weight: bold">
+            Planificar actividad
+          </h3>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="input-group mb-3">
+              <span class="input-group-text">Proyecto</span>
+              <select
+                (change)="obtenerColaboradores()"
+                [(ngModel)]="proyecto"
+                required
+                class="form-select"
+              >
+                <option>Elija una opción...</option>
+                <option *ngFor="let item of listaProyectos" [ngValue]="item">
+                  {{ item.nombreProyecto }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="activity">Colaborador</span>
+              <select class="form-select" [(ngModel)]="this.dniEjecutor2">
+                <option selected>Elija una opción...</option>
+                <option *ngFor="let item of listaColaboradores" [value]="item.dni"> 
+                  {{ item.nombreCompleto }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="Algo"
+                >Fecha de fin planificada</span
+              >
+              <input type="date" class="form-control" [(ngModel)]="this.fechaPlanificada2"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="Algo">Tiempo planificado</span>
+              <input type="text" class="form-control" [(ngModel)]="this.tiempoPlanificado2"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="Algo">Descripción</span>
+              <textarea class="form-control"  [(ngModel)]="this.descripcion2"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cerrar
+          </button>
+          <button type="button" class="btn btn-primary" (click)="registrarPlanificado()" > Registrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

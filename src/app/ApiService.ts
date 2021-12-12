@@ -5,10 +5,10 @@ import {retry, catchError} from "rxjs/operators";
 import {
   Actividad,
   Empleado,
-  FiltrosBE,
+  FiltrosBE, LineaNegocio,
   Proyecto,
   RangoFechas,
-  RegEmpleadoXProyecto,
+  RegEmpleadoXProyecto, RegHorasXLinea,
   RegHorasXProyecto,
   RegTablaEmp
 } from "./model";
@@ -77,6 +77,15 @@ export class ApiService {
         catchError(this.errorHandl)
       );
   }
+
+  registrarHoras(actividad : Actividad):Observable<Actividad>{
+    return this.http.post<Actividad>(this.baseurl + 'insertar-actividad',actividad , this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );
+  }
+
   obtenerRegsHorasXProyecto(data: RangoFechas): Observable<RegHorasXProyecto[]>{
     return this.http.post<RegHorasXProyecto[]>(this.baseurl + 'obtener-horas-registradas-proyecto', data, this.httpOptions)
       .pipe(
@@ -86,6 +95,27 @@ export class ApiService {
   }
   obtenerColaboradores(data: Proyecto): Observable<Empleado[]>{
     return this.http.post<Empleado[]>(this.baseurl + 'obtener-colaboradores', data, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
+  obtenerRegsHorasXLinea(data: LineaNegocio): Observable<RegHorasXLinea>{
+    return this.http.post<RegHorasXLinea>(this.baseurl + 'horas-linea', data, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
+  obtenerLineas(): Observable<LineaNegocio[]>{
+    return this.http.post<LineaNegocio[]>(this.baseurl + 'obtener-lineas', this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
+  obtenerTablaRegHXL(): Observable<RegHorasXLinea[]>{
+    return this.http.post<RegHorasXLinea[]>(this.baseurl + 'tabla-lineas', this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)

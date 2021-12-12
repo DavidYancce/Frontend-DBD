@@ -33,7 +33,7 @@ export class Actividad{
   tiempoRequerido = 0;
   descripcion = "";
   idProyecto = 0;
-  dniEjecutor = 0;
+  dniEjecutor = "";
   dniPlanificador = "";
   fechaPlanificada = "";
   tiempoPlanificado = 0;
@@ -41,7 +41,7 @@ export class Actividad{
   planificado = 0;
 }
 export class Empleado{
-  DNI = "";
+  dni = "";
   nombre1 = "";
   nombre2 = "";
   apellidoPaterno = "";
@@ -64,4 +64,12 @@ export class RangoFechas{
 export class RegHorasXProyecto{
   nombreProyecto = "";
   sumaHoras = 0;
+}
+export class LineaNegocio{
+  idLinea = 0;
+  nombreLinea = "";
+}
+export class RegHorasXLinea{
+  sumaHoras = 0;
+  nombreLinea = "";
 }

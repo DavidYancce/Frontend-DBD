@@ -6,7 +6,7 @@
       class="btn btn-primary"
       id="btn1"
       data-bs-toggle="modal"
-      data-bs-target=""
+      data-bs-target="#HRPL"
     >
       Horas reportadas por línea de negocio
     </button>
@@ -38,6 +38,89 @@
       Horas planificadas vs Horas reportadas por proyecto
     </button>
   </div>
+  <!-- Modal HORAS REPORTADASXLINEA-->
+  <div class="modal fade" id="HRPL" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="" style="font-size: 14px">Dashboard - Horas por línea de negocio</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <h2 align="center">Horas por línea de negocio</h2>
+          <!--  <div class="row">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="Algo">Algo</span>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          -->
+          <div class="row">
+            <div class="col-lg-10">
+              <div class="input-group mb-3">
+                <span class="input-group-text">Línea de negocio</span>
+                <select [(ngModel)]="lineaSeleccionada" class="form-select">
+                  <option selected>Elija una opción...</option>
+                  <option *ngFor="let linea of listaLineas" [ngValue]="linea">{{linea.nombreLinea}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-2">
+              <button
+                (click)="obtenerRegsHorasXLinea()"
+                type="button"
+                class="btn btn-secondary"
+              >
+                Consultar
+              </button>
+            </div>
+          </div>
+          <table *ngIf="verTabla()" class="table">
+            <thead class="table-dark">
+            <tr>
+              <th scope="col">Línea de negocio</th>
+              <th scope="col">Tiempo requerido total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of regsHL">
+              <td>{{item.nombreLinea}}</td>
+              <td>{{item.sumaHoras}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <table *ngIf="verTabla()==false" class="table">
+            <thead class="table-dark">
+            <tr>
+              <th scope="col">Línea de negocio</th>
+              <th scope="col">Tiempo requerido total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>{{this.regHL.nombreLinea}}</td>
+              <td>{{this.regHL.sumaHoras}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-dismiss="modal"
+          >
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Modal HORAS REPORTADAS POR PROYECTO-->
   <div class="modal fade" id="HRPP" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -62,15 +145,16 @@
           -->
           <div class="row">
             <div class="col-lg-5">
+
               <div class="input-group mb-3">
                 <span class="input-group-text">Fecha Inicio</span>
-                <input [(ngModel)]="this.rangFechas.fechaInicio" type="date" min="1990-01-01" max="2022-12-31" name="fechainicio">
+                <input [(ngModel)]="this.rangFechas.fechaInicio" type="date" class="form-control" name="fechainicio">
               </div>
             </div>
             <div class="col-lg-5">
               <div class="input-group mb-3">
                 <span class="input-group-text">Fecha Fin</span>
-                <input [(ngModel)]="this.rangFechas.fechaFin" type="date" min="1990-01-01" max="2022-12-31" name="fechafin">
+                <input [(ngModel)]="this.rangFechas.fechaFin" type="date" class="form-control" name="fechafin">
               </div>
             </div>
             <div class="col-2">
