@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {retry, catchError} from "rxjs/operators";
 import {
-  Actividad,
+  Actividad, Cliente,
   Empleado,
   FiltrosBE, LineaNegocio,
   Proyecto,
@@ -120,5 +120,13 @@ export class ApiService {
         retry(1),
         catchError(this.errorHandl)
       );
+  }
+  obtenerClientes(): Observable<Cliente[]>{
+    return this.http.post<Cliente[]>(this.baseurl + 'obtener-clientes', this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+
   }
 }

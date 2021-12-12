@@ -179,10 +179,10 @@
             <div class="input-group mb-3">
               <span class="input-group-text" id="Algo">Cliente</span>
               <select class="form-select" id="inputGroupSelect01">
-                <option selected>Choose...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option selected>Elige un cliente...</option>
+                <option *ngFor="let item of listaClientes">
+                  {{item.razonSocial}}
+                </option>
               </select>
             </div>
           </div>
@@ -201,10 +201,11 @@
           <div class="input-group mb-3">
             <span class="input-group-text" id="Algo">Línea de negocio</span>
             <select class="form-select" id="inputGroupSelect01">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option selected>Elige una línea...</option>
+              <option *ngFor="let item of listaLineas">
+                {{item.nombreLinea}}
+              </option>
+
             </select>
           </div>
         </div>

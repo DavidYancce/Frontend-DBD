@@ -73,3 +73,9 @@ export class RegHorasXLinea{
   sumaHoras = 0;
   nombreLinea = "";
 }
+export class Cliente{
+  RUC = "";
+  razonSocial = "";
+  pais = "";
+  direccion = "";
+}
