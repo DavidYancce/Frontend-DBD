@@ -36,6 +36,10 @@ export class ReporteComponent implements OnInit {
     fechaInicio: "",
     fechaFin: ""
   };
+  rangFechasInit: RangoFechas = {
+    fechaInicio: "1800-01-01",
+    fechaFin: "2099-12-31"
+  };
   regsHP: RegHorasXProyecto[] = [];
   regsPR: RegPlanVSRep[] = [];
   regsHL: RegHorasXLinea [] = [];
@@ -46,6 +50,8 @@ export class ReporteComponent implements OnInit {
     this.obtenerLineas();
     this.obtenerRegsHorasXLinea();
     this.obtenerRegsPlanVSRep();
+    this.obtenerRegsHorasXProyectoInit();
+    this.obtenerRegsEmpleadoXProyecto();
   }
   obtenerProyectos(): void{
     this.service.obtenerProyectos().subscribe((data)=>{
@@ -75,12 +81,20 @@ export class ReporteComponent implements OnInit {
       this.regsHP = data;
     });
   }
+  obtenerRegsHorasXProyectoInit(): void{
+    let fechas: RangoFechas ={
+      fechaInicio: this.rangFechasInit.fechaInicio,
+      fechaFin: this.rangFechasInit.fechaFin
+    }
+    this.service.obtenerRegsHorasXProyecto(fechas).subscribe((data)=>{
+      this.regsHP = data;
+    });
+  }
   obtenerRegsHorasXLinea(): void{
     let linea: LineaNegocio ={
       idLinea: this.lineaSeleccionada.idLinea,
       nombreLinea: this.lineaSeleccionada.nombreLinea
     }
-    console.log(linea.idLinea);
     this.service.obtenerRegsHorasXLinea(linea).subscribe((data)=>{
       this.regsHL = data;
     });
@@ -102,7 +116,6 @@ export class ReporteComponent implements OnInit {
     }
     this.service.obtenerRegsPlanVSRep(proyecto).subscribe((data)=>{
       this.regsPR = data;
-      console.log(this.proyectoSeleccionado.nombreProyecto);
     });
   }
 }
