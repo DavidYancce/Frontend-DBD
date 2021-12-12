@@ -61,13 +61,16 @@
             </div>
           -->
           <div class="row">
-            <div class="col-lg-10">
+            <div class="col-lg-5">
               <div class="input-group mb-3">
-                <span class="input-group-text">Línea de negocio</span>
-                <select [(ngModel)]="lineaSeleccionada" class="form-select">
-                  <option selected>Elija una opción...</option>
-                  <option *ngFor="let linea of listaLineas" [ngValue]="linea">{{linea.nombreLinea}}</option>
-                </select>
+                <span class="input-group-text">Fecha Inicio</span>
+                <input [(ngModel)]="this.rangFechas.fechaInicio" type="date" class="form-control" name="fechainicio">
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="input-group mb-3">
+                <span class="input-group-text">Fecha Fin</span>
+                <input [(ngModel)]="this.rangFechas.fechaFin" type="date" class="form-control" name="fechafin">
               </div>
             </div>
             <div class="col-2">

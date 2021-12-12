@@ -48,10 +48,10 @@ export class ReporteComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerProyectos();
     this.obtenerLineas();
-    this.obtenerRegsHorasXLinea();
     this.obtenerRegsPlanVSRep();
     this.obtenerRegsHorasXProyectoInit();
     this.obtenerRegsEmpleadoXProyecto();
+    this.obtenerRegsHorasXLineaInit();
   }
   obtenerProyectos(): void{
     this.service.obtenerProyectos().subscribe((data)=>{
@@ -91,11 +91,20 @@ export class ReporteComponent implements OnInit {
     });
   }
   obtenerRegsHorasXLinea(): void{
-    let linea: LineaNegocio ={
-      idLinea: this.lineaSeleccionada.idLinea,
-      nombreLinea: this.lineaSeleccionada.nombreLinea
+    let fechas: RangoFechas ={
+      fechaInicio: this.rangFechas.fechaInicio,
+      fechaFin: this.rangFechas.fechaFin
     }
-    this.service.obtenerRegsHorasXLinea(linea).subscribe((data)=>{
+    this.service.obtenerRegsHorasXLinea(fechas).subscribe((data)=>{
+      this.regsHL = data;
+    });
+  }
+  obtenerRegsHorasXLineaInit(): void{
+    let fechas: RangoFechas ={
+      fechaInicio: this.rangFechasInit.fechaInicio,
+      fechaFin: this.rangFechasInit.fechaFin
+    }
+    this.service.obtenerRegsHorasXLinea(fechas).subscribe((data)=>{
       this.regsHL = data;
     });
   }
