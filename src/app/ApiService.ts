@@ -160,4 +160,11 @@ export class ApiService {
       catchError(this.errorHandl)
     );
   }
+  actualizarActividad(datos: Actividad):Observable<Actividad>{
+    return this.http.post<Actividad>(this.baseurl + 'actualizar-actividad',datos, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
 }

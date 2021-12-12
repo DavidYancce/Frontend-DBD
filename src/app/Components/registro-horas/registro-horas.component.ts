@@ -13,8 +13,19 @@ import {ProyectoComponent} from "../proyecto/proyecto.component";
 export class RegistroHorasComponent implements OnInit {
   listaActividades: Actividad[] = [];
   listaProyectos: Proyecto[] = [];
-
-   idProyecto: number = 0;
+  actividadPlanReg: Actividad = {
+    fechaIngresada: 'this.fechaIngresada',
+    tiempoRequerido: 0,
+    descripcion: '',
+    idProyecto: 0,
+    dniEjecutor: '44131494', //cambiar por el de localstorage
+    dniPlanificador: '',
+    fechaPlanificada: '',
+    tiempoPlanificado: 0,
+    idActividad: 0,
+    planificado: 1
+  }
+  idProyecto: number = 0;
   idActividad: number = 0;
   fechaIngresada: string = '';
   tiempoRequerido: number = 0;
@@ -76,13 +87,12 @@ export class RegistroHorasComponent implements OnInit {
     data2.dniPlanificador='44131494'//cambiar por el de localstorage
     data2.planificado=1
     //console.log(data2)
-    this.service.registrarHoras(data2).subscribe(data=>{
+    this.service.registrarHoras(data2).subscribe(data2=>{
       console.log(data2);
     })
   }
   obtenerColaboradores(): void{
     let proyecto: Proyecto ={
-      //idProyecto: this.proyecto.idProyecto,
       idProyecto: this.proyecto.idProyecto,
       idLinea: this.proyecto.idLinea,
       estado: this.proyecto.estado,
@@ -94,6 +104,22 @@ export class RegistroHorasComponent implements OnInit {
     this.service.obtenerColaboradores(proyecto).subscribe((data)=>{
       this.listaColaboradores = data;
     });
-
+  }
+  actualizarActividad(): void{
+    let actividad: Actividad ={
+      fechaIngresada: this.fechaIngresada,
+      tiempoRequerido: this.tiempoRequerido,
+      descripcion: this.descripcion,
+      idProyecto: this.idProyecto,
+      dniEjecutor: '44131494', //cambiar por el de localstorage
+      dniPlanificador: '',
+      fechaPlanificada: '',
+      tiempoPlanificado: 0,
+      idActividad: this.idActividad,
+      planificado: 1
+    }
+    this.service.actualizarActividad(actividad).subscribe((data)=>{
+      this.actividadPlanReg = data;
+    });
   }
 }

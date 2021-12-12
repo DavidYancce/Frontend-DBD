@@ -1,6 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; background: linear-gradient(rgba(0,124,171), rgba(120,186,210,.32) 80%)}
+html, body {
+  height: 0%;
+  background: linear-gradient(rgba(0,124,171), rgba(120,186,210,.32) 80%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
 $primary: #d90053;
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .primary{
