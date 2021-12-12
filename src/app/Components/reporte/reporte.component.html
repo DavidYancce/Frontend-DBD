@@ -80,7 +80,7 @@
               </button>
             </div>
           </div>
-          <table *ngIf="verTabla()" class="table">
+          <table class="table">
             <thead class="table-dark">
             <tr>
               <th scope="col">Línea de negocio</th>
@@ -91,20 +91,6 @@
             <tr *ngFor="let item of regsHL">
               <td>{{item.nombreLinea}}</td>
               <td>{{item.sumaHoras}}</td>
-            </tr>
-            </tbody>
-          </table>
-          <table *ngIf="verTabla()==false" class="table">
-            <thead class="table-dark">
-            <tr>
-              <th scope="col">Línea de negocio</th>
-              <th scope="col">Tiempo requerido total</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>{{this.regHL.nombreLinea}}</td>
-              <td>{{this.regHL.sumaHoras}}</td>
             </tr>
             </tbody>
           </table>

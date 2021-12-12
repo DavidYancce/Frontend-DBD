@@ -18,7 +18,6 @@ import {
 export class ReporteComponent implements OnInit {
   listaProyectos: Proyecto[] = [];
   listaLineas: LineaNegocio[] = [];
-  regsHL: RegHorasXLinea [] = [];
   proyectoSeleccionado : Proyecto = {
     idProyecto: 0,
     idLinea: 0,
@@ -38,16 +37,13 @@ export class ReporteComponent implements OnInit {
     fechaFin: ""
   };
   regsHP: RegHorasXProyecto[] = [];
-  regHL: RegHorasXLinea = {
-    sumaHoras: 0,
-    nombreLinea: ""
-  };
+  regsHL: RegHorasXLinea [] = [];
   constructor(private service: ApiService) { }
 
   ngOnInit(): void {
     this.obtenerProyectos();
     this.obtenerLineas();
-    this.obtenerTablaHXL()
+    this.obtenerRegsHorasXLinea();
   }
   obtenerProyectos(): void{
     this.service.obtenerProyectos().subscribe((data)=>{
@@ -82,26 +78,14 @@ export class ReporteComponent implements OnInit {
       idLinea: this.lineaSeleccionada.idLinea,
       nombreLinea: this.lineaSeleccionada.nombreLinea
     }
+    console.log(linea.idLinea);
     this.service.obtenerRegsHorasXLinea(linea).subscribe((data)=>{
-      this.regHL = data;
+      this.regsHL = data;
     });
   }
   obtenerLineas(): void{
     this.service.obtenerLineas().subscribe((data)=>{
       this.listaLineas = data;
     });
-  }
-  obtenerTablaHXL(): void{
-    this.service.obtenerTablaRegHXL().subscribe((data)=>{
-      this.regsHL = data;
-    });
-  }
-  verTabla():boolean{
-    if(this.lineaSeleccionada.idLinea == 0){
-      this.obtenerTablaHXL();
-      return true;
-    } else{
-      return false;
-    }
   }
 }

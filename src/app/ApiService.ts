@@ -100,8 +100,8 @@ export class ApiService {
         catchError(this.errorHandl)
       );
   }
-  obtenerRegsHorasXLinea(data: LineaNegocio): Observable<RegHorasXLinea>{
-    return this.http.post<RegHorasXLinea>(this.baseurl + 'horas-linea', data, this.httpOptions)
+  obtenerRegsHorasXLinea(data: LineaNegocio): Observable<RegHorasXLinea[]>{
+    return this.http.post<RegHorasXLinea[]>(this.baseurl + 'tabla-lineas', data, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)
@@ -109,13 +109,6 @@ export class ApiService {
   }
   obtenerLineas(): Observable<LineaNegocio[]>{
     return this.http.post<LineaNegocio[]>(this.baseurl + 'obtener-lineas', this.httpOptions)
-      .pipe(
-        retry(1),
-        catchError(this.errorHandl)
-      );
-  }
-  obtenerTablaRegHXL(): Observable<RegHorasXLinea[]>{
-    return this.http.post<RegHorasXLinea[]>(this.baseurl + 'tabla-lineas', this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)
