@@ -65,3 +65,11 @@ export class RegHorasXProyecto{
   nombreProyecto = "";
   sumaHoras = 0;
 }
+export class LineaNegocio{
+  idLinea = 0;
+  nombreLinea = "";
+}
+export class RegHorasXLinea{
+  sumaHoras = 0;
+  nombreLinea = "";
+}
