@@ -9,10 +9,11 @@ import {
   Proyecto,
   RangoFechas,
   RegEmpleadoXProyecto, RegHorasXLinea,
-  RegHorasXProyecto,
+  RegHorasXProyecto, RegPlanVSRep,
   RegTablaEmp,
   FiltrosBP,
   Cliente
+
 } from "./model";
 @Injectable({
   providedIn: 'root'
@@ -102,8 +103,8 @@ export class ApiService {
         catchError(this.errorHandl)
       );
   }
-  obtenerRegsHorasXLinea(data: LineaNegocio): Observable<RegHorasXLinea>{
-    return this.http.post<RegHorasXLinea>(this.baseurl + 'horas-linea', data, this.httpOptions)
+  obtenerRegsHorasXLinea(data: LineaNegocio): Observable<RegHorasXLinea[]>{
+    return this.http.post<RegHorasXLinea[]>(this.baseurl + 'tabla-lineas', data, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)
@@ -116,8 +117,9 @@ export class ApiService {
         catchError(this.errorHandl)
       );
   }
-  obtenerTablaRegHXL(): Observable<RegHorasXLinea[]>{
-    return this.http.post<RegHorasXLinea[]>(this.baseurl + 'tabla-lineas', this.httpOptions)
+  
+  obtenerRegsPlanVSRep(data: Proyecto): Observable<RegPlanVSRep[]>{
+    return this.http.post<RegPlanVSRep[]>(this.baseurl + 'proyecto-registrado-planificado', data, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)

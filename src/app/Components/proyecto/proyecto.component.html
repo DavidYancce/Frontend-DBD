@@ -134,7 +134,9 @@
             <div class="input-group mb-3">
               <span class="input-group-text" >Cliente</span>
               <select class="form-select" id="inputGroupSelect01">
+
                 <option *ngFor="let cliente of listaClientes" [value]="cliente.RUC">{{ cliente.razonSocial }}</option>
+                
               </select>
             </div>
           </div>
@@ -154,6 +156,7 @@
             <span class="input-group-text" >Línea de negocio</span>
             <select class="form-select" id="inputGroupSelect01">
               <option *ngFor="let linea of listaLineaNegocios" [value]="linea.idLinea" >{{  linea.nombreLinea }}</option>
+
             </select>
           </div>
         </div>

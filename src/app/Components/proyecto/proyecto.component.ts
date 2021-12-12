@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../../ApiService";
 import {Empleado, Proyecto,FiltrosBP, Cliente, LineaNegocio } from "../../model";
 
+
+
 @Component({
   selector: 'app-proyecto',
   templateUrl: './proyecto.component.html',
@@ -22,6 +24,7 @@ export class ProyectoComponent implements OnInit {
     estadoProyecto: '',
     idProyecto: 0
   }
+
   constructor(private service: ApiService) { }
 
   ngOnInit(): void {
@@ -31,10 +34,16 @@ export class ProyectoComponent implements OnInit {
     this.obtenerClientes(),
     this.obtenerLineasNegocio(),
     this.buscarProyectos()
+
   }
   obtenerJefesProyecto(): void{
     this.service.obtenerJefesProyecto().subscribe((data)=>{
       this.listaJefes = data;
+    });
+  }
+  obtenerClientes(): void{
+    this.service.obtenerClientes().subscribe((data)=>{
+      this.listaClientes = data;
     });
   }
   obtenerOperarios(): void{
@@ -47,12 +56,7 @@ export class ProyectoComponent implements OnInit {
       this.listaProyectos = data;
     });
   }
-  obtenerClientes():void{
-    this.service.obtenerClientes().subscribe(data=>{
-      this.listaClientes=data;
-      console.log(data)
-    })
-  }
+
   obtenerLineasNegocio():void{
     this.service.obtenerLineas().subscribe(data=>{
       this.listaLineaNegocios=data;
