@@ -10,7 +10,9 @@ import {
   RangoFechas,
   RegEmpleadoXProyecto, RegHorasXLinea,
   RegHorasXProyecto,
-  RegTablaEmp
+  RegTablaEmp,
+  FiltrosBP,
+  Cliente
 } from "./model";
 @Injectable({
   providedIn: 'root'
@@ -130,6 +132,20 @@ export class ApiService {
   }
   insertarEmpleado(empleado: Empleado): Observable<Empleado>{
     return this.http.post<Empleado>(this.baseurl + 'insertar-empleado',empleado, this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );
+  }
+  buscarProyectos(filtros: FiltrosBP ):Observable<FiltrosBP[]>{
+    return this.http.post<FiltrosBP[]>(this.baseurl + 'busqueda-proyectos',filtros, this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );
+  }
+  obtenerClientes():Observable<Cliente[]>{
+    return this.http.post<Cliente[]>(this.baseurl + 'obtener-clientes',null, this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.errorHandl)

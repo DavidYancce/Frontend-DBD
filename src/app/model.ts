@@ -1,75 +1,89 @@
-export class FiltrosBE{
-  dni = "";
-  nombreCompleto = "";
-  apellidoPaterno = "";
-  apellidoMaterno = "";
-  rol = "";
+export class FiltrosBE {
+  dni = '';
+  nombreCompleto = '';
+  apellidoPaterno = '';
+  apellidoMaterno = '';
+  rol = '';
 }
-export class RegTablaEmp{
-  dni = "";
-  nombre = "";
-  apellidos = "";
-  rol = "";
-  telefono = "";
-  correoEmpresarial = "";
-  nombreProyecto = "";
+export class RegTablaEmp {
+  dni = '';
+  nombre = '';
+  apellidos = '';
+  rol = '';
+  telefono = '';
+  correoEmpresarial = '';
+  nombreProyecto = '';
 }
-export class Proyecto{
+export class Proyecto {
   idProyecto = 0;
   idLinea = 0;
-  estado = "";
-  nombreProyecto = "";
-  RUC = "";
-  fechaInicio = "";
-  fechaFin = "";
+  estado = '';
+  nombreProyecto = '';
+  RUC = '';
+  fechaInicio = '';
+  fechaFin = '';
 }
-export class RegEmpleadoXProyecto{
-  empleado = "";
+export class RegEmpleadoXProyecto {
+  empleado = '';
   tiempoRequerido = 0;
-  proyecto = "";
+  proyecto = '';
 }
-export class Actividad{
-  fechaIngresada = "";
+export class Actividad {
+  fechaIngresada = '';
   tiempoRequerido = 0;
-  descripcion = "";
+  descripcion = '';
   idProyecto = 0;
-  dniEjecutor = "";
-  dniPlanificador = "";
-  fechaPlanificada = "";
+  dniEjecutor = '';
+  dniPlanificador = '';
+  fechaPlanificada = '';
   tiempoPlanificado = 0;
   idActividad = 0;
   planificado = 0;
 }
-export class Empleado{
-  dni = "";
-  nombre1 = "";
-  nombre2 = "";
-  apellidoPaterno = "";
-  apellidoMaterno = "";
-  nombreCompleto = "";
-  correoEmpresarial = "";
-  contrasenia = "";
-  telefono = "";
-  genero = "";
-  estado = "";
-  direccion = "";
-  fechaNacimiento = "";
+export class Empleado {
+  dni = '';
+  nombre1 = '';
+  nombre2 = '';
+  apellidoPaterno = '';
+  apellidoMaterno = '';
+  nombreCompleto = '';
+  correoEmpresarial = '';
+  contrasenia = '';
+  telefono = '';
+  genero = '';
+  estado = '';
+  direccion = '';
+  fechaNacimiento = '';
   idCargo = 0;
   sueldo = 0;
 }
-export class RangoFechas{
-  fechaInicio = "";
-  fechaFin = "";
+export class RangoFechas {
+  fechaInicio = '';
+  fechaFin = '';
 }
-export class RegHorasXProyecto{
-  nombreProyecto = "";
+export class RegHorasXProyecto {
+  nombreProyecto = '';
   sumaHoras = 0;
 }
-export class LineaNegocio{
+export class LineaNegocio {
   idLinea = 0;
-  nombreLinea = "";
+  nombreLinea = '';
 }
-export class RegHorasXLinea{
+export class RegHorasXLinea {
   sumaHoras = 0;
-  nombreLinea = "";
+  nombreLinea = '';
+}
+export class FiltrosBP {
+  nombreProyecto: string = '';
+  nombreJefe: string = '';
+  lineaNegocio: string = '';
+  razonSocial: string = '';
+  estadoProyecto: string = '';
+  idProyecto: number = 0;
+}
+export class Cliente {
+  RUC:string = '';
+  razonSocial:string = '';
+  pais:string = '';
+  direccion:string = '';
 }
