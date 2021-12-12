@@ -3,13 +3,23 @@
     <div class="col-lg-6">
       <div class="input-group mb-3">
         <span class="input-group-text" >Nombre del proyecto</span>
-        <input type="text" class="form-control" [(ngModel)]="this.filtros.nombreProyecto" />
+        <select class="form-select">
+          <option selected>Elija un proyecto...</option>
+          <option *ngFor="let item of listaProyectos">
+            {{ item.nombreProyecto }}
+          </option>
+        </select>
       </div>
     </div>
     <div class="col-lg-6">
       <div class="input-group mb-3">
         <span class="input-group-text" >Nombre del jefe de proyecto</span>
-        <input type="text" class="form-control" [(ngModel)]="this.filtros.nombreJefe" />
+        <select class="form-select" [(ngModel)]="this.dataProyecto.dni">
+          <option value="">Elija un jefe de proyecto...</option>
+          <option *ngFor="let item of listaJefes" [value]="item.dni">
+            {{ item.nombreCompleto }}
+          </option>
+        </select>
       </div>
     </div>
   </div>
@@ -17,13 +27,21 @@
     <div class="col-lg-6">
       <div class="input-group mb-3">
         <span class="input-group-text" >Linea de negocio</span>
-        <input type="text" class="form-control" [(ngModel)]="this.filtros.lineaNegocio" />
+        <select class="form-select" [(ngModel)]="this.dataProyecto.idLinea" >
+          <option value=0>Elija una linea de negocio...</option>
+          <option *ngFor="let linea of listaLineaNegocios" [value]="linea.idLinea" >{{  linea.nombreLinea }}</option>
+
+        </select>
       </div>
     </div>
     <div class="col-lg-6">
       <div class="input-group mb-3">
-        <span class="input-group-text" >Nombre de la empresa</span>
-        <input type="text" class="form-control" [(ngModel)]="this.filtros.razonSocial" />
+        <span class="input-group-text" >Cliente</span>
+        <select class="form-select" id="inputGroupSelect01"  [(ngModel)]="this.dataProyecto.ruc" >
+          <option value=''>Elija un cliente...</option>
+          <option *ngFor="let cliente of listaClientes" [value]="cliente.ruc">{{ cliente.razonSocial }}</option>
+
+        </select>
       </div>
     </div>
   </div>
@@ -136,7 +154,7 @@
               <select class="form-select" id="inputGroupSelect01"  [(ngModel)]="this.dataProyecto.ruc" >
                 <option value=''>Seleccione...</option>
                 <option *ngFor="let cliente of listaClientes" [value]="cliente.ruc">{{ cliente.razonSocial }}</option>
-                
+
               </select>
             </div>
           </div>
@@ -157,7 +175,6 @@
             <select class="form-select" [(ngModel)]="this.dataProyecto.idLinea" >
               <option value=0>Seleccione...</option>
               <option *ngFor="let linea of listaLineaNegocios" [value]="linea.idLinea" >{{  linea.nombreLinea }}</option>
-
             </select>
           </div>
         </div>
@@ -250,7 +267,7 @@
         </div>
         <div class="row">
           <div class="input-group mb-3">
-            <span class="input-group-text" 
+            <span class="input-group-text"
               >Descripción de la tarea</span
             >
             <textarea class="form-control"></textarea>
