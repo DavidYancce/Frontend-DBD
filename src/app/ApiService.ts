@@ -12,7 +12,7 @@ import {
   RegHorasXProyecto, RegPlanVSRep,
   RegTablaEmp,
   FiltrosBP,
-  Cliente
+  Cliente, Datos
 
 } from "./model";
 @Injectable({
@@ -148,6 +148,13 @@ export class ApiService {
   }
   obtenerClientes():Observable<Cliente[]>{
     return this.http.post<Cliente[]>(this.baseurl + 'obtener-clientes',null, this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );
+  }
+  insertarProyecto(datos: Datos):Observable<Datos>{
+    return this.http.post<Datos>(this.baseurl + 'insertar-proyecto',datos, this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.errorHandl)

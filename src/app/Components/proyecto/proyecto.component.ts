@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../../ApiService";
-import {Empleado, Proyecto,FiltrosBP, Cliente, LineaNegocio } from "../../model";
+import {Empleado, Proyecto,FiltrosBP, Cliente, LineaNegocio ,Datos} from "../../model";
 
 
 
@@ -23,6 +23,15 @@ export class ProyectoComponent implements OnInit {
     razonSocial: '',
     estadoProyecto: '',
     idProyecto: 0
+  }
+  dataProyecto: Datos ={
+    idProyecto: 0,
+    idLinea: 0,
+    nombreProyecto: '',
+    ruc: '',
+    fechaInicio: '',
+    fechaFin: '',
+    dni: ''
   }
 
   constructor(private service: ApiService) { }
@@ -67,6 +76,12 @@ export class ProyectoComponent implements OnInit {
     this.service.buscarProyectos(this.filtros).subscribe(data=>{
       this.listaProyectosFiltrados=data;
       console.log(this.filtros)
+      console.log(data)
+    })
+  }
+  insertarProyecto():void{
+    console.log(this.dataProyecto)
+    this.service.insertarProyecto(this.dataProyecto).subscribe(data=>{
       console.log(data)
     })
   }

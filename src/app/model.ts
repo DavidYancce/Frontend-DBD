@@ -82,17 +82,26 @@ export class FiltrosBP {
   idProyecto: number = 0;
 }
 export class Cliente {
-  RUC:string = '';
-  razonSocial:string = '';
-  pais:string = '';
-  direccion:string = '';
+  ruc: string = '';
+  razonSocial: string = '';
+  pais: string = '';
+  direccion: string = '';
 }
 
-export class RegPlanVSRep{
-  proyecto = "";
-  fechaReportada = "";
-  fechaPlanificada = "";
-  diferencia = "";
-  tiempoRegistrado = "";
-  tiempoPlanificado = "";
+export class RegPlanVSRep {
+  proyecto = '';
+  fechaReportada = '';
+  fechaPlanificada = '';
+  diferencia = '';
+  tiempoRegistrado = '';
+  tiempoPlanificado = '';
+}
+export class Datos {
+  idProyecto: number=0;
+  idLinea: number=0;
+  nombreProyecto:string='';
+  ruc:string='';
+  fechaInicio:string='';
+  fechaFin:string='';
+  dni:string='';
 }

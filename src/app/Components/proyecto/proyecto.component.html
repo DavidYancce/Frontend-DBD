@@ -115,15 +115,15 @@
         <div class="row">
           <div class="input-group mb-3">
             <span class="input-group-text" >Nombre del proyecto</span>
-            <input type="text" class="form-control" />
+            <input type="text" class="form-control" [(ngModel)]="this.dataProyecto.nombreProyecto" />
           </div>
         </div>
         <div class="row">
           <div class="input-group mb-3">
             <span class="input-group-text" >Jefe de proyecto</span>
-            <select class="form-select">
-              <option selected>Elija una opción...</option>
-              <option *ngFor="let item of listaJefes">
+            <select class="form-select" [(ngModel)]="this.dataProyecto.dni">
+              <option value="">Elija una opción...</option>
+              <option *ngFor="let item of listaJefes" [value]="item.dni">
                 {{ item.nombreCompleto }}
               </option>
             </select>
@@ -133,9 +133,9 @@
           <div class="col-lg-10">
             <div class="input-group mb-3">
               <span class="input-group-text" >Cliente</span>
-              <select class="form-select" id="inputGroupSelect01">
-
-                <option *ngFor="let cliente of listaClientes" [value]="cliente.RUC">{{ cliente.razonSocial }}</option>
+              <select class="form-select" id="inputGroupSelect01"  [(ngModel)]="this.dataProyecto.ruc" >
+                <option value=''>Seleccione...</option>
+                <option *ngFor="let cliente of listaClientes" [value]="cliente.ruc">{{ cliente.razonSocial }}</option>
                 
               </select>
             </div>
@@ -154,7 +154,8 @@
         <div class="row">
           <div class="input-group mb-3">
             <span class="input-group-text" >Línea de negocio</span>
-            <select class="form-select" id="inputGroupSelect01">
+            <select class="form-select" [(ngModel)]="this.dataProyecto.idLinea" >
+              <option value=0>Seleccione...</option>
               <option *ngFor="let linea of listaLineaNegocios" [value]="linea.idLinea" >{{  linea.nombreLinea }}</option>
 
             </select>
@@ -163,35 +164,34 @@
         <div class="row">
           <div class="input-group mb-3">
             <span class="input-group-text" >Fecha de inicio</span>
-            <input type="date" class="form-control" />
+            <input type="date" class="form-control" [(ngModel)]="this.dataProyecto.fechaInicio" />
           </div>
         </div>
         <div class="row">
           <div class="input-group mb-3">
             <span class="input-group-text" >Fecha de fin</span>
-            <input type="date" class="form-control" />
+            <input type="date" class="form-control" [(ngModel)]="this.dataProyecto.fechaFin " />
           </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
           <div class="input-group mb-3">
             <span class="input-group-text" >Estado del proyecto</span>
-            <select class="form-select" id="inputGroupSelect01">
-              <option selected>Elija una opción...</option>
+            <select class="form-select" >
               <option value="FN">Finalizado</option>
               <option value="ED">En desarrollo</option>
               <option value="EG">En garantía</option>
-              <option value="NI">No iniciado</option>
+              <option value="NI" selected >No iniciado</option>
             </select>
           </div>
-        </div>
+        </div> -->
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" (click)="insertarProyecto()">Save changes</button>
       </div>
     </div>
   </div>
