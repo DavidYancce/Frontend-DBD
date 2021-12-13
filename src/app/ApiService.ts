@@ -12,7 +12,7 @@ import {
   RegHorasXProyecto, RegPlanVSRep,
   RegTablaEmp,
   FiltrosBP,
-  Cliente, Datos, ContactoCliente
+  Cliente, Datos, ContactoCliente, FiltroEmpleadoProyecto
 
 } from "./model";
 @Injectable({
@@ -200,9 +200,15 @@ export class ApiService {
         catchError(this.errorHandl)
       );
   }
-
   login(datos: Empleado): Observable<Empleado> {
     return this.http.post<Empleado>(this.baseurl + 'validar-login', datos, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
+  actividadesXEmpleadoXProyecto(datos: FiltroEmpleadoProyecto): Observable<Actividad[]> {
+    return this.http.post<Actividad[]>(this.baseurl + 'obtener-actividades-empleado-proyecto', datos, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)

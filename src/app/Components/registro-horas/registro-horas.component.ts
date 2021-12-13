@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import {ApiService} from "../../ApiService";
-import {Actividad, Empleado, Proyecto} from "../../model";
+import {Actividad, Empleado, FiltroEmpleadoProyecto, Proyecto} from "../../model";
 import {ProyectoComponent} from "../proyecto/proyecto.component";
+import {colors} from "@angular/cli/utilities/color";
 
 
 @Component({
@@ -37,6 +38,10 @@ export class RegistroHorasComponent implements OnInit {
     idActividad: 0,
     planificado: 0
   }
+  parametrosInput: FiltroEmpleadoProyecto = {
+    idProyecto: 0,
+    dniEmpleado: '40301406'
+  }
   idProyecto: number = 0;
   idActividad: number = 0;
   fechaIngresada: string = '';
@@ -63,14 +68,13 @@ export class RegistroHorasComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.obtenerActividades();
-     this.obtenerProyectos();
+    this.obtenerProyectos();
   }
-  obtenerActividades(): void {
-    this.service.obtenerActividades().subscribe((data) => {
-      this.listaActividades = data;
-    });
-  }
+  //obtenerActividades(): void {
+  //  this.service.obtenerActividades().subscribe((data) => {
+  //    this.listaActividades = data;
+  //  });
+  //}
   obtenerProyectos(): void {
     this.service.obtenerProyectos().subscribe((data) => {
       this.listaProyectos = data;
@@ -133,6 +137,15 @@ export class RegistroHorasComponent implements OnInit {
     this.service.actualizarActividad(actividad).subscribe((data)=>{
       this.actividadPlanReg = data;
       console.log(this.actividadPlanReg)
+    });
+  }
+  actividadesXEmpleadoXProyecto(): void{
+    let parametros: FiltroEmpleadoProyecto ={
+      idProyecto: this.parametrosInput.idProyecto,
+      dniEmpleado: this.parametrosInput.dniEmpleado
+    }
+    this.service.actividadesXEmpleadoXProyecto(parametros).subscribe((data)=>{
+      this.listaActividades = data;
     });
   }
 }

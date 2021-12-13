@@ -14,14 +14,14 @@
         <label for="inputEmail" class="form-label">Correo Empresarial</label>
         <div class="input-group flex-nowrap">
           <span class="input-group-text" id="addon-wrapping-email">@</span>
-          <input [(ngModel)]="this.datos_login.correoEmpresarial" id="inputEmail" type="email" class="form-control form-control-lg" placeholder="example.e@gestionysistemas.com">
+          <input id="inputEmail" type="email" class="form-control form-control-lg" placeholder="example.e@gestionysistemas.com" [(ngModel)]="this.datos_login.correoEmpresarial" name="correoLogin">
         </div>
       </div>
       <div class="mb-3">
         <label for="inputPassword" class="form-label">Contraseña</label>
         <div class="input-group flex-nowrap">
           <span class="input-group-text" id="addon-wrapping-password">&</span>
-          <input [(ngModel)]="this.datos_login.contrasenia" id="inputPassword" type="password" class="form-control form-control-lg">
+          <input id="inputPassword" type="password" class="form-control form-control-lg" required [(ngModel)]="this.datos_login.contrasenia" name="contraseñaLogin">
         </div>
       </div>
       <div class="boton">
