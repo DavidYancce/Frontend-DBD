@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.service.login(this.datos_login).subscribe((data) => {
       console.log(data);
       if (data.dni != '') {
-        location.assign(''); //this.url+'login'
+        location.assign('home'); //this.url+'login'
         localStorage.setItem('usuario', JSON.stringify(data))
 
       }

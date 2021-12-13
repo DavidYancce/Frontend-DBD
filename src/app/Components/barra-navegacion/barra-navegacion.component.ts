@@ -34,7 +34,7 @@ export class BarraNavegacionComponent implements OnInit {
     console.log(this.idCargo);
   }
   cerrarSesion():void{
-    location.assign('login');
+    location.assign('');
     localStorage.removeItem('usuario')
   }
 
