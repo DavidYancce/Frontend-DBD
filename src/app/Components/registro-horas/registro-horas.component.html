@@ -31,19 +31,15 @@
         <th scope="col">Tiempo requerido</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>Algo</td>
-        <td>Algo</td>
-        <td>Algo</td>
-        <td>Algo</td>
-      </tr>
-      <tr>
-        <td>Algo</td>
-        <td>Algo</td>
-        <td>Algo</td>
-        <td>Algo</td>
-      </tr>
+    <tbody class="table-light">
+    <tr *ngFor="let item of regsActividad">
+      <td>{{item.nombreProyecto}}</td>
+      <td *ngIf="item.planificado==1">Planificado</td>
+      <td *ngIf="item.planificado==0">No planificado</td>
+      <td>{{item.fechaIngresada}}</td>
+      <td>{{item.descripcion}}</td>
+      <td>{{item.tiempoRequerido}}</td>
+    </tr>
     </tbody>
   </table>
 </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {ApiService} from "../../ApiService";
-import {Actividad, Empleado, FiltroEmpleadoProyecto, Proyecto} from "../../model";
+import {Actividad, Empleado, FiltroEmpleadoProyecto, Proyecto, RegTablaAct} from "../../model";
 import {ProyectoComponent} from "../proyecto/proyecto.component";
 import {colors} from "@angular/cli/utilities/color";
 
@@ -14,6 +14,7 @@ import {colors} from "@angular/cli/utilities/color";
 export class RegistroHorasComponent implements OnInit {
   listaActividades: Actividad[] = [];
   listaProyectos: Proyecto[] = [];
+  regsActividad: RegTablaAct[] = [];
   actividadPlanReg: Actividad = {
     fechaIngresada: '',
     tiempoRequerido: 0,
@@ -69,6 +70,7 @@ export class RegistroHorasComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerProyectos();
+    this.obtenerRegsActividad();
   }
   //obtenerActividades(): void {
   //  this.service.obtenerActividades().subscribe((data) => {
@@ -146,6 +148,29 @@ export class RegistroHorasComponent implements OnInit {
     }
     this.service.actividadesXEmpleadoXProyecto(parametros).subscribe((data)=>{
       this.listaActividades = data;
+    });
+  }
+  obtenerRegsActividad(): void{
+    let empleado: Empleado ={
+      dni: '44131494',
+      nombre1: '',
+      nombre2: '',
+      apellidoPaterno: '',
+      apellidoMaterno: '',
+      nombreCompleto: '',
+      correoEmpresarial: '',
+      contrasenia: '',
+      telefono: '',
+      genero: '',
+      estado: '',
+      direccion: '',
+      fechaNacimiento: '',
+      idCargo: 0,
+      sueldo: 0
+    }
+    this.service.obtenerRegsActividad(empleado).subscribe((data)=>{
+      this.regsActividad = data;
+      console.log(data);
     });
   }
 }
