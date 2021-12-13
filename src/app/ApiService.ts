@@ -167,4 +167,12 @@ export class ApiService {
         catchError(this.errorHandl)
       );
   }
+
+  login(datos: Empleado):Observable<Empleado>{
+    return this.http.post<Empleado>(this.baseurl+'validar-login',datos, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
 }
