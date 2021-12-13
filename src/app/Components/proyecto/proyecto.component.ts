@@ -150,6 +150,8 @@ export class ProyectoComponent implements OnInit {
       descripcion: this.descripcion
     }
     this.service.insertarEmpleadoXProyecto(empleadoxproyecto).subscribe((data) =>{
+      console.log(data);
+      console.log(empleadoxproyecto);
       this.dataEmpleadoXProyecto = data;
     });
   }
