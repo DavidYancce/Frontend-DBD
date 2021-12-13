@@ -62,50 +62,49 @@
       <button type="button" class="btn btn-primary" (click)="buscarProyectos()">Buscar proyecto</button>
     </div>
   </div>
-
-  <table class="table">
-    <thead class="table-dark">
+  <div>
+    <table class="table">
+      <thead class="table-dark">
       <tr>
-        <th scope="col">ID Proyecto</th>
         <th scope="col">Nombre del proyecto</th>
         <th scope="col">Jefe de proyecto</th>
         <th scope="col">Cliente</th>
         <th scope="col">Linea de negocio</th>
         <th scope="col">Estado</th>
-        <th scope="col"></th>
       </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody class="table-light">
       <tr *ngFor="let proyectof of listaProyectosFiltrados">
-        <td>{{ proyectof.idProyecto }}</td>
         <td>{{ proyectof.nombreProyecto }}</td>
         <td>{{ proyectof.nombreJefe }}</td>
         <td>{{ proyectof.razonSocial }}</td>
         <td>{{ proyectof.lineaNegocio }}</td>
         <td>{{ proyectof.estadoProyecto }}</td>
       </tr>
-    </tbody>
-  </table>
-  <div class="row">
-    <div class="col-lg-2">
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#AgregarProyecto"
-      >
-        Añadir un nuevo proyecto
-      </button>
-    </div>
-    <div class="col-lg-7">
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#agrearEmpleadoProyecto"
-      >
-        Añadir empleados a un proyecto
-      </button>
+      </tbody>
+    </table>
+  </div>
+  <div class="form-horizontal" style="margin-bottom: 1vw">
+    <div class="form-group row">
+      <div style="position: relative">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#AgregarProyecto"
+        >
+          Añadir un nuevo proyecto
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#agrearEmpleadoProyecto"
+          style="position: absolute; right: 12px;"
+        >
+          Añadir empleados a un proyecto
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -130,12 +129,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title" style="font-weight: bold">Nuevo Proyecto</h3>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <ul class="block-options">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </ul>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -216,7 +217,7 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Cerrar
         </button>
-        <button type="button" class="btn btn-primary" (click)="insertarProyecto()">Registrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="insertarProyecto()">Registrar </button>
       </div>
     </div>
   </div>
@@ -236,12 +237,14 @@
         <h3 class="modal-title" id="" style="font-weight: bold">
           Asignar empleados a un proyecto
         </h3>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <ul class="block-options">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </ul>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -303,15 +306,17 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="" style="font-weight: bold">
-          Ingresar Cliente
+        <h3 class="modal-title" style="font-weight: bold">
+          Registrar Cliente
         </h3>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <ul class="block-options">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+        </ul>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -613,15 +618,17 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="" style="font-weight: bold">
+        <h3 class="modal-title" style="font-weight: bold">
           Añadir Contacto
         </h3>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <ul class="block-options">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </ul>
       </div>
       <div class="modal-body">
         <div class="row">

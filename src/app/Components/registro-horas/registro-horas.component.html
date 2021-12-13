@@ -1,24 +1,25 @@
 <div class="px-5 py-5">
-  <div class="row">
-    <div class="col-lg-2 mb-3">
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#reghoras"
-      >
-        Registrar Horas
-      </button>
-    </div>
-    <div class="col-lg-5 mb-3">
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#planact"
-      >
-        Planificar actividad
-      </button>
+  <div class="form-horizontal" style="margin-bottom: 1vw">
+    <div class="form-group row">
+      <div>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#reghoras"
+            style="margin-right: 1vw"
+          >
+            Registrar Horas
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#planact"
+          >
+            Planificar actividad
+          </button>
+      </div>
     </div>
   </div>
   <table class="table">
@@ -52,15 +53,17 @@
   aria-hidden="true"
 >
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" style="font-weight: bold">Registrar horas</h3>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+    <div class="modal-content" style="border-radius: 20px">
+      <div class="modal-header" style="border-top-left-radius: 18px;border-top-right-radius: 17px; background: #007CAB;color: white">
+        <p class="modal-title" style="font-size: 18px">Registrar horas</p>
+        <ul class="block-options">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </ul>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -156,17 +159,20 @@
     aria-hidden="true"
   >
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title" style="font-weight: bold">
+      <div class="modal-content" style="border-radius: 20px">
+        <div class="modal-header" style="border-top-left-radius: 18px;border-top-right-radius: 17px; background: #007CAB;color: white">
+          <p class="modal-title" style="font-size: 18px">
             Planificar actividad
-          </h3>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
+          </p>
+          <ul class="block-options">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              style="color:white"
+            ></button>
+          </ul>
         </div>
         <div class="modal-body">
           <div class="row">
