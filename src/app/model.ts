@@ -97,7 +97,6 @@ export class RegPlanVSRep {
   tiempoPlanificado = '';
 }
 export class Datos {
-  idProyecto: number=0;
   idLinea: number=0;
   nombreProyecto:string='';
   ruc:string='';
@@ -124,7 +123,7 @@ export class RegTablaAct {
   tiempoRequerido = 0;
 }
 export class EmpleadoXProyecto{
-  DNI = "";
+  dni = "";
   idProyecto = 0;
   rol = "";
   descripcion = "";

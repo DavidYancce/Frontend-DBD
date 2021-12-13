@@ -34,6 +34,7 @@ export class ProyectoComponent implements OnInit {
   listaClientes: Cliente[] =[];
   listaLineaNegocios: LineaNegocio[]=[];
   listaProyectosFiltrados: FiltrosBP[]=[];
+  listaClienteContactos: ContactoCliente[] = [];
   filtros: FiltrosBP = {
     nombreProyecto: '',
     nombreJefe: '',
@@ -43,7 +44,6 @@ export class ProyectoComponent implements OnInit {
     idProyecto: 0
   };
   dataProyecto: Datos ={
-    idProyecto: 0,
     idLinea: 0,
     nombreProyecto: '',
     ruc: '',
@@ -62,10 +62,10 @@ export class ProyectoComponent implements OnInit {
     telefono: '',
     correoElectronico: '',
     direccion: '',
-    ruc: ''
+    ruc: this.dataCliente.ruc
   };
   dataEmpleadoXProyecto: EmpleadoXProyecto ={
-    DNI: '',
+    dni: '',
     idProyecto: 0,
     rol: '',
     descripcion: ''
@@ -139,6 +139,7 @@ export class ProyectoComponent implements OnInit {
     })
   }
   buscarProyectos():void{
+    console.log(this.filtros);
     this.service.buscarProyectos(this.filtros).subscribe(data=>{
       this.listaProyectosFiltrados=data;
     })
@@ -150,22 +151,37 @@ export class ProyectoComponent implements OnInit {
     })
   }
   registrarContactoCliente():void{
-    this.dataContactoCliente.ruc = this.dataCliente.ruc,
     console.log(this.dataContactoCliente)
-    this.service.registrarContactoCliente(this.dataContactoCliente).subscribe(data=>{
-      console.log(data)
-    })
+    for(let item of this.listaClienteContactos){
+      item.ruc = this.dataCliente.ruc,
+      this.service.registrarContactoCliente(item).subscribe(data=>{
+        console.log(data)
+      })
+    }
+  }
+  guardarClienteContactos():void{
+    let contacto: ContactoCliente = {
+      ruc: this.dataContactoCliente.ruc,
+      nombreCompleto: this.dataContactoCliente.nombreCompleto,
+      telefono: this.dataContactoCliente.telefono,
+      correoElectronico: this.dataContactoCliente.correoElectronico,
+      direccion: this.dataContactoCliente.direccion
+    }
+    this.listaClienteContactos.push(contacto);
+    console.log(this.listaClienteContactos);
   }
   registrarCliente():void{
     console.log(this.dataCliente)
     this.service.registrarCliente(this.dataCliente).subscribe(data=>{
       console.log(data)
+      this.registrarContactoCliente();
+      this.obtenerClientes();
     })
   }
   registrarEmpleadoXProyecto():void{
     let empleadoxproyecto: EmpleadoXProyecto ={
       idProyecto: this.proyectoSeleccionado.idProyecto,
-      DNI: this.empleadoSeleccionado.dni,
+      dni: this.empleadoSeleccionado.dni,
       rol: this.rol,
       descripcion: this.descripcion
     }

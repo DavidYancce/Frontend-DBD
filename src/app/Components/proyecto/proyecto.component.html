@@ -4,8 +4,8 @@
       <div class="input-group mb-3">
         <span class="input-group-text" >Nombre del proyecto</span>
         <select [(ngModel)]="this.filtros.nombreProyecto" class="form-select">
-          <option [value]="" selected>Elija un proyecto...</option>
-          <option *ngFor="let item of listaProyectos">
+          <option value="" selected>Elija un proyecto...</option>
+          <option *ngFor="let item of listaProyectos" [value]="item.nombreProyecto">
             {{ item.nombreProyecto }}
           </option>
         </select>
@@ -15,7 +15,7 @@
       <div class="input-group mb-3">
         <span class="input-group-text" >Nombre del jefe de proyecto</span>
         <select [(ngModel)]="this.filtros.nombreJefe" class="form-select">
-          <option [value]="" selected>Elija un jefe de proyecto...</option>
+          <option value="" selected>Elija un jefe de proyecto...</option>
           <option *ngFor="let item of listaJefes">
             {{ item.nombreCompleto }}
           </option>
@@ -28,8 +28,8 @@
       <div class="input-group mb-3">
         <span class="input-group-text" >Linea de negocio</span>
         <select class="form-select" [(ngModel)]="this.filtros.lineaNegocio" >
-          <option [value]="" selected>Elija una linea de negocio...</option>
-          <option *ngFor="let linea of listaLineaNegocios">{{  linea.nombreLinea }}</option>
+          <option value="" selected>Elija una linea de negocio...</option>
+          <option *ngFor="let linea of listaLineaNegocios" [value]="linea.nombreLinea">{{  linea.nombreLinea }}</option>
 
         </select>
       </div>
@@ -37,8 +37,8 @@
     <div class="col-lg-6">
       <div class="input-group mb-3">
         <span class="input-group-text" >Cliente</span>
-        <select class="form-select" id="inputGroupSelect01"  [(ngModel)]="this.filtros.razonSocial" >
-          <option [value]="" selected>Elija un cliente...</option>
+        <select class="form-select" id="inputGroupSelect01" [(ngModel)]="this.filtros.razonSocial" >
+          <option value="" selected>Elija un cliente...</option>
           <option *ngFor="let cliente of listaClientes">{{ cliente.razonSocial }}</option>
 
         </select>
@@ -73,7 +73,7 @@
         <th scope="col">Estado</th>
       </tr>
       </thead>
-      <tbody class="table-light">
+      <tbody class="table-light table-striped">
       <tr *ngFor="let proyectof of listaProyectosFiltrados">
         <td>{{ proyectof.nombreProyecto }}</td>
         <td>{{ proyectof.nombreJefe }}</td>
@@ -217,7 +217,7 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Cerrar
         </button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="insertarProyecto()">Registrar </button>
+        <button type="button" class="btn btn-primary" (click)="insertarProyecto()">Registrar </button>
       </div>
     </div>
   </div>
@@ -252,7 +252,7 @@
             <span class="input-group-text" >Proyecto</span>
             <select [(ngModel)]="proyectoSeleccionado" class="form-select">
               <option selected>Elija una opción...</option>
-              <option *ngFor="let item of listaProyectos">
+              <option *ngFor="let item of listaProyectos" [ngValue]="item">
                 {{ item.nombreProyecto }}
               </option>
             </select>
@@ -264,7 +264,7 @@
             <span class="input-group-text" >Empleado</span>
             <select [(ngModel)]="empleadoSeleccionado" class="form-select">
               <option selected>Elija una opción...</option>
-              <option *ngFor="let item of listaOperarios">
+              <option *ngFor="let item of listaOperarios" [ngValue]="item">
                 {{ item.nombreCompleto }}
               </option>
             </select>
@@ -272,16 +272,14 @@
         </div>
         <div class="row">
           <div class="input-group mb-3">
-            <span [(ngModel)]="rol" class="input-group-text" >Rol</span>
-            <textarea class="form-control"></textarea>
+            <span class="input-group-text" >Rol</span>
+            <textarea [(ngModel)]="this.rol" class="form-control"></textarea>
           </div>
         </div>
         <div class="row">
           <div class="input-group mb-3">
-            <span [(ngModel)]="descripcion" class="input-group-text"
-              >Descripción de la tarea</span
-            >
-            <textarea class="form-control"></textarea>
+            <span class="input-group-text">Descripción de la tarea</span>
+            <textarea [(ngModel)]="this.descripcion" class="form-control"></textarea>
           </div>
         </div>
       </div>
@@ -655,7 +653,7 @@
         <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#agregarCliente">
           Cerrar
         </button>
-        <button (click)="registrarEmpleadoXProyecto()" type="button" class="btn btn-primary">Registrar</button>
+        <button (click)="guardarClienteContactos()" type="button" class="btn btn-primary">Registrar</button>
       </div>
     </div>
   </div>

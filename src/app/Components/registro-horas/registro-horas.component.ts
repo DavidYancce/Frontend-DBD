@@ -51,7 +51,7 @@ export class RegistroHorasComponent implements OnInit {
     tiempoRequerido: 0,
     descripcion: '',
     idProyecto: 0,
-    dniEjecutor: '43373869', //cambiar por el de localstorage
+    dniEjecutor: '43373869',
     dniPlanificador: '',
     fechaPlanificada: '',
     tiempoPlanificado: 0,
@@ -60,7 +60,7 @@ export class RegistroHorasComponent implements OnInit {
   }
   parametrosInput: FiltroEmpleadoProyecto = {
     idProyecto: 0,
-    dniEmpleado: '40301406'
+    dniEmpleado: ''
   }
   idProyecto: number = 0;
   idActividad: number = 0;
@@ -91,6 +91,7 @@ export class RegistroHorasComponent implements OnInit {
     this.dataUsuario = JSON.parse(localStorage.getItem('usuario')||'')
     this.dniHere=this.dataUsuario.dni;
     this.cargoHere=this.dataUsuario.idCargo;
+    this.parametrosInput.dniEmpleado=this.dataUsuario.dni;
     console.log(this.dniHere);
     this.obtenerProyectos();
     this.obtenerRegsActividad();
@@ -125,7 +126,7 @@ export class RegistroHorasComponent implements OnInit {
     data2.idProyecto=this.proyecto.idProyecto
     data2.fechaPlanificada=this.fechaPlanificada2
     data2.tiempoPlanificado=this.tiempoPlanificado2
-    data2.dniPlanificador='44131494'//cambiar por el de localstorage
+    data2.dniPlanificador=this.dniHere//cambiar por el de localstorage
     data2.planificado=1
     //console.log(data2)
     this.service.registrarHoras(data2).subscribe(data2=>{
@@ -151,8 +152,8 @@ export class RegistroHorasComponent implements OnInit {
       fechaIngresada: this.fechaIngresada,
       tiempoRequerido: this.tiempoRequerido,
       descripcion: this.actividadSeleccionada.descripcion,
-      idProyecto: this.idProyecto,
-      dniEjecutor: '43373869', //cambiar por el de localstorage
+      idProyecto: this.parametrosInput.idProyecto,
+      dniEjecutor: this.dniHere, //cambiar por el de localstorage
       dniPlanificador: '',
       fechaPlanificada: '',
       tiempoPlanificado: 0,
@@ -161,6 +162,7 @@ export class RegistroHorasComponent implements OnInit {
     }
     this.service.actualizarActividad(actividad).subscribe((data)=>{
       this.actividadPlanReg = data;
+      this.obtenerRegsActividad();
       console.log(this.actividadPlanReg)
     });
   }

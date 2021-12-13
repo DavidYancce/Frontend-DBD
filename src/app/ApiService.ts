@@ -169,8 +169,8 @@ export class ApiService {
       );
   }
 
-  insertarProyecto(datos: Datos): Observable<Datos> {
-    return this.http.post<Datos>(this.baseurl + 'insertar-proyecto', datos, this.httpOptions)
+  insertarProyecto(data: Datos): Observable<Datos> {
+    return this.http.post<Datos>(this.baseurl + 'insertar-proyecto', data, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)
