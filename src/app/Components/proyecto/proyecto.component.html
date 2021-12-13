@@ -3,8 +3,8 @@
     <div class="col-lg-6">
       <div class="input-group mb-3">
         <span class="input-group-text" >Nombre del proyecto</span>
-        <select class="form-select">
-          <option selected>Elija un proyecto...</option>
+        <select [(ngModel)]="this.filtros.nombreProyecto" class="form-select">
+          <option [value]="" selected>Elija un proyecto...</option>
           <option *ngFor="let item of listaProyectos">
             {{ item.nombreProyecto }}
           </option>
@@ -14,9 +14,9 @@
     <div class="col-lg-6">
       <div class="input-group mb-3">
         <span class="input-group-text" >Nombre del jefe de proyecto</span>
-        <select class="form-select" [(ngModel)]="this.dataProyecto.dni">
-          <option value="">Elija un jefe de proyecto...</option>
-          <option *ngFor="let item of listaJefes" [value]="item.dni">
+        <select [(ngModel)]="this.filtros.nombreJefe" class="form-select">
+          <option [value]="" selected>Elija un jefe de proyecto...</option>
+          <option *ngFor="let item of listaJefes">
             {{ item.nombreCompleto }}
           </option>
         </select>
@@ -27,9 +27,9 @@
     <div class="col-lg-6">
       <div class="input-group mb-3">
         <span class="input-group-text" >Linea de negocio</span>
-        <select class="form-select" [(ngModel)]="this.dataProyecto.idLinea" >
-          <option value=0>Elija una linea de negocio...</option>
-          <option *ngFor="let linea of listaLineaNegocios" [value]="linea.idLinea" >{{  linea.nombreLinea }}</option>
+        <select class="form-select" [(ngModel)]="this.filtros.lineaNegocio" >
+          <option [value]="" selected>Elija una linea de negocio...</option>
+          <option *ngFor="let linea of listaLineaNegocios">{{  linea.nombreLinea }}</option>
 
         </select>
       </div>
@@ -37,9 +37,9 @@
     <div class="col-lg-6">
       <div class="input-group mb-3">
         <span class="input-group-text" >Cliente</span>
-        <select class="form-select" id="inputGroupSelect01"  [(ngModel)]="this.dataProyecto.ruc" >
-          <option value=''>Elija un cliente...</option>
-          <option *ngFor="let cliente of listaClientes" [value]="cliente.ruc">{{ cliente.razonSocial }}</option>
+        <select class="form-select" id="inputGroupSelect01"  [(ngModel)]="this.filtros.razonSocial" >
+          <option [value]="" selected>Elija un cliente...</option>
+          <option *ngFor="let cliente of listaClientes">{{ cliente.razonSocial }}</option>
 
         </select>
       </div>
@@ -206,9 +206,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
+          Cerrar
         </button>
-        <button type="button" class="btn btn-primary" (click)="insertarProyecto()">Save changes</button>
+        <button type="button" class="btn btn-primary" (click)="insertarProyecto()">Registrar</button>
       </div>
     </div>
   </div>
@@ -309,13 +309,13 @@
         <div class="row">
           <div class="input-group mb-3">
             <span class="input-group-text" >Razon Social</span>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="this.dataCliente.razonSocial" type="text" class="form-control" />
           </div>
         </div>
         <div class="row">
           <div class="input-group mb-3">
             <span class="input-group-text">Pais</span>
-            <select id="country" name="country" class="form-select">
+            <select [(ngModel)]="this.dataCliente.pais " id="country" name="country" class="form-select">
               <option value="Afganistan">Afghanistan</option>
               <option value="Albania">Albania</option>
               <option value="Algeria">Algeria</option>
@@ -568,7 +568,13 @@
         <div class="row">
           <div class="input-group mb-3">
             <span class="input-group-text" >RUC</span>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="this.dataCliente.ruc" type="text" class="form-control" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-group mb-3">
+            <span class="input-group-text" >Dirección</span>
+            <input [(ngModel)]="this.dataCliente.direccion" type="text" class="form-control" />
           </div>
         </div>
         <div class="row">
@@ -579,11 +585,66 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#AgregarProyecto">
+          Cerrar
         </button>
-        <button type="button" class="btn btn-primary">Registrar</button>
-        <button type="button" class="btn btn-primary">Añadir contactos</button>
+        <button (click)="registrarCliente()" type="button" class="btn btn-primary">Registrar</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agrearContactoCliente">Añadir contactos</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal agregar contacto cliente -->
+<div
+  class="modal fade"
+  id="agrearContactoCliente"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="" style="font-weight: bold">
+          Añadir Contacto
+        </h3>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="input-group mb-3">
+            <span class="input-group-text" >Nombre completo</span>
+            <input [(ngModel)]="this.dataContactoCliente.nombreCompleto" type="text" class="form-control" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-group mb-3">
+            <span class="input-group-text" >Dirección</span>
+            <input [(ngModel)]="this.dataContactoCliente.direccion" type="text" class="form-control" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-group mb-3">
+            <span class="input-group-text" >Correo electrónico</span>
+            <input [(ngModel)]="this.dataContactoCliente.correoElectronico" type="text" class="form-control" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-group mb-3">
+            <span class="input-group-text" >Teléfono</span>
+            <input [(ngModel)]="this.dataContactoCliente.telefono" type="text" class="form-control" />
+          </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#agregarCliente">
+          Cerrar
+        </button>
+        <button (click)="registrarContactoCliente()" type="button" class="btn btn-primary">Registrar</button>
       </div>
     </div>
   </div>

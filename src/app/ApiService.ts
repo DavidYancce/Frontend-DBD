@@ -12,7 +12,7 @@ import {
   RegHorasXProyecto, RegPlanVSRep,
   RegTablaEmp,
   FiltrosBP,
-  Cliente, Datos
+  Cliente, Datos, ContactoCliente
 
 } from "./model";
 @Injectable({
@@ -167,4 +167,24 @@ export class ApiService {
         catchError(this.errorHandl)
       );
   }
+  registrarContactoCliente(data: ContactoCliente):Observable<ContactoCliente>{
+    return this.http.post<ContactoCliente>(this.baseurl + 'insertar-contacto-cliente',data, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
+  registrarCliente(data: Cliente):Observable<Cliente>{
+    return this.http.post<Cliente>(this.baseurl + 'insertar-cliente',data, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
+  login(datos: Empleado):Observable<Empleado>{
+    return this.http.post<Empleado>(this.baseurl+'validar-login',datos, this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );
 }
