@@ -47,17 +47,13 @@
       </div>
     </div>
     <div class="col-lg-3">
-      <div class="d-grid gap-2">
-        <button
-          (click)="buscarEmpleado()"
-          type="button"
-          name=""
-          id=""
-          class="btn btn-primary"
-        >
-          Buscar
-        </button>
-      </div>
+      <button
+        (click)="buscarEmpleado()"
+        type="button"
+        class="btn btn-primary"
+      >
+        Buscar
+      </button>
     </div>
   </div>
 
@@ -85,7 +81,7 @@
       </tr>
     </tbody>
   </table>
-  <button
+  <button *ngIf="this.cargoHere==1 || this.cargoHere==4"
     type="button"
     class="btn btn-primary"
     data-bs-toggle="modal"
@@ -104,11 +100,9 @@
   aria-hidden="true"
 >
   <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" style="font-weight: bold">
-          Nuevo empleado
-        </h3>
+    <div class="modal-content" style="border-radius: 20px">
+      <div class="modal-header" style="border-top-left-radius: 18px;border-top-right-radius: 17px; background: #007CAB;color: white">
+        <p class="modal-title" style="font-size: 18px">Nuevo Empleado</p>
         <ul class="block-options">
           <button
             type="button"
@@ -249,6 +243,7 @@
         <button
           type="button"
           class="btn btn-primary"
+          data-bs-dismiss="modal"
           (click)="insertarEmpleado()"
         >
           Insertar empleado
