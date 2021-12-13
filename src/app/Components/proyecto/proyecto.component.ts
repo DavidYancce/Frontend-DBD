@@ -55,6 +55,7 @@ export class ProyectoComponent implements OnInit {
     this.obtenerClientes(),
     this.obtenerLineasNegocio(),
     this.buscarProyectos()
+    console.log(JSON.parse(localStorage.getItem('usuario')||''));
 
   }
   obtenerJefesProyecto(): void{

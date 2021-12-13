@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
       console.log(data);
       if (data.dni != '') {
         location.assign(''); //this.url+'login'
+        localStorage.setItem('usuario', JSON.stringify(data))
       }
       else{
         console.log("No ingresaste") //this.url+''
