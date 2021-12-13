@@ -112,3 +112,7 @@ export class ContactoCliente {
   correoElectronico = "";
   direccion = "";
 }
+export class FiltroEmpleadoProyecto{
+  idProyecto = 0;
+  dniEmpleado = "";
+}

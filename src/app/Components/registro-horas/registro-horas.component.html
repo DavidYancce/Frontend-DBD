@@ -24,10 +24,11 @@
   <table class="table">
     <thead class="table-dark">
       <tr>
-        <th scope="col">Algo</th>
-        <th scope="col">Algo</th>
-        <th scope="col">Algo</th>
-        <th scope="col">Algo</th>
+        <th scope="col">Nombre del proyecto</th>
+        <th scope="col">Planificado</th>
+        <th scope="col">Fecha Reportada</th>
+        <th scope="col">Descripción del tarea</th>
+        <th scope="col">Tiempo requerido</th>
       </tr>
     </thead>
     <tbody>
@@ -69,7 +70,7 @@
         <div class="row">
           <div class="input-group mb-3">
             <span class="input-group-text" id="project">Proyecto</span>
-            <select class="form-select" [(ngModel)]="idProyecto">
+            <select class="form-select" (change)="actividadesXEmpleadoXProyecto()" [(ngModel)]="this.parametrosInput.idProyecto">
               <option selected>Elija una opción...</option>
               <option
                 *ngFor="let item of listaProyectos"

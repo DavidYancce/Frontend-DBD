@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
     idCargo: 0,
     sueldo: 0,
   };
-  url = 'http://localhost:4200/';
   constructor(private service: ApiService) { }
 
   ngOnInit(): void {
@@ -36,10 +35,10 @@ export class LoginComponent implements OnInit {
     this.service.login(this.datos_login).subscribe((data) => {
       console.log(data);
       if (data.dni != '') {
-        location.assign(''); //this.url+'login'
+        location.assign('');
       }
       else{
-        console.log("No ingresaste") //this.url+''
+        console.log("No ingresaste")
       }
     });
   }
