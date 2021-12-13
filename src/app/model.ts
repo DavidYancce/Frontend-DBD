@@ -116,3 +116,10 @@ export class FiltroEmpleadoProyecto{
   idProyecto = 0;
   dniEmpleado = "";
 }
+export class RegTablaAct {
+  nombreProyecto = "";
+  planificado = 0;
+  fechaIngresada = "";
+  descripcion = "";
+  tiempoRequerido = 0;
+}
