@@ -25,6 +25,7 @@ export class ApiService {
       'Content-Type': 'application/json;charset=utf-8'
     })
   };
+
   // @ts-ignore
   errorHandl(error) {
     let errorMessage = '';
@@ -36,44 +37,51 @@ export class ApiService {
     console.log(errorMessage);
     return throwError(errorMessage);
   }
-  constructor(private http: HttpClient) { }
 
-  buscarEmpleado(data: FiltrosBE): Observable<RegTablaEmp[]>{
+  constructor(private http: HttpClient) {
+  }
+
+  buscarEmpleado(data: FiltrosBE): Observable<RegTablaEmp[]> {
     return this.http.post<RegTablaEmp[]>(this.baseurl + 'busqueda-empleados', data, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)
       );
   }
-  obtenerProyectos(): Observable<Proyecto[]>{
+
+  obtenerProyectos(): Observable<Proyecto[]> {
     return this.http.post<Proyecto[]>(this.baseurl + 'obtener-proyectos', this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)
       );
   }
-  obtenerRegsEmpleadoXProyecto(data: Proyecto): Observable<RegEmpleadoXProyecto[]>{
+
+  obtenerRegsEmpleadoXProyecto(data: Proyecto): Observable<RegEmpleadoXProyecto[]> {
     return this.http.post<RegEmpleadoXProyecto[]>(this.baseurl + 'horas-empleado-proyecto', data, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)
       );
   }
-  obtenerActividades(): Observable<Actividad[]>{
+
+  obtenerActividades(): Observable<Actividad[]> {
     return this.http.post<Actividad[]>(this.baseurl + 'obtener-actividades', this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)
       );
   }
-  obtenerJefesProyecto(): Observable<Empleado[]>{
+
+  obtenerJefesProyecto(): Observable<Empleado[]> {
     return this.http.post<Empleado[]>(this.baseurl + 'obtener-jefes-proyecto', this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)
       );
   }
-  obtenerOperarios(): Observable<Empleado[]>{
+
+  obtenerOperarios(): Observable<Empleado[]> {
     return this.http.post<Empleado[]>(this.baseurl + 'obtener-empleados', this.httpOptions)
       .pipe(
         retry(1),
@@ -81,36 +89,39 @@ export class ApiService {
       );
   }
 
-  registrarHoras(actividad : Actividad):Observable<Actividad>{
-    return this.http.post<Actividad>(this.baseurl + 'insertar-actividad',actividad , this.httpOptions)
-    .pipe(
-      retry(1),
-      catchError(this.errorHandl)
-    );
+  registrarHoras(actividad: Actividad): Observable<Actividad> {
+    return this.http.post<Actividad>(this.baseurl + 'insertar-actividad', actividad, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
   }
 
-  obtenerRegsHorasXProyecto(data: RangoFechas): Observable<RegHorasXProyecto[]>{
+  obtenerRegsHorasXProyecto(data: RangoFechas): Observable<RegHorasXProyecto[]> {
     return this.http.post<RegHorasXProyecto[]>(this.baseurl + 'obtener-horas-registradas-proyecto', data, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)
       );
   }
-  obtenerColaboradores(data: Proyecto): Observable<Empleado[]>{
+
+  obtenerColaboradores(data: Proyecto): Observable<Empleado[]> {
     return this.http.post<Empleado[]>(this.baseurl + 'obtener-colaboradores', data, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)
       );
   }
-  obtenerRegsHorasXLinea(data: RangoFechas): Observable<RegHorasXLinea[]>{
+
+  obtenerRegsHorasXLinea(data: RangoFechas): Observable<RegHorasXLinea[]> {
     return this.http.post<RegHorasXLinea[]>(this.baseurl + 'tabla-lineas', data, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)
       );
   }
-  obtenerLineas(): Observable<LineaNegocio[]>{
+
+  obtenerLineas(): Observable<LineaNegocio[]> {
     return this.http.post<LineaNegocio[]>(this.baseurl + 'obtener-lineas', this.httpOptions)
       .pipe(
         retry(1),
@@ -118,73 +129,83 @@ export class ApiService {
       );
   }
 
-  obtenerRegsPlanVSRep(data: Proyecto): Observable<RegPlanVSRep[]>{
+  obtenerRegsPlanVSRep(data: Proyecto): Observable<RegPlanVSRep[]> {
     return this.http.post<RegPlanVSRep[]>(this.baseurl + 'proyecto-registrado-planificado', data, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)
       );
   }
-  obtenerCargos(): Observable<any[]>{
-    return this.http.post<Empleado[]>(this.baseurl + 'obtener-cargos',null, this.httpOptions)
-    .pipe(
-      retry(1),
-      catchError(this.errorHandl)
-    );
-  }
-  insertarEmpleado(empleado: Empleado): Observable<Empleado>{
-    return this.http.post<Empleado>(this.baseurl + 'insertar-empleado',empleado, this.httpOptions)
-    .pipe(
-      retry(1),
-      catchError(this.errorHandl)
-    );
-  }
-  buscarProyectos(filtros: FiltrosBP ):Observable<FiltrosBP[]>{
-    return this.http.post<FiltrosBP[]>(this.baseurl + 'busqueda-proyectos',filtros, this.httpOptions)
-    .pipe(
-      retry(1),
-      catchError(this.errorHandl)
-    );
-  }
-  obtenerClientes():Observable<Cliente[]>{
-    return this.http.post<Cliente[]>(this.baseurl + 'obtener-clientes',null, this.httpOptions)
-    .pipe(
-      retry(1),
-      catchError(this.errorHandl)
-    );
-  }
-  insertarProyecto(datos: Datos):Observable<Datos>{
-    return this.http.post<Datos>(this.baseurl + 'insertar-proyecto',datos, this.httpOptions)
-    .pipe(
-      retry(1),
-      catchError(this.errorHandl)
-    );
-  }
-  actualizarActividad(datos: Actividad):Observable<Actividad>{
-    return this.http.post<Actividad>(this.baseurl + 'actualizar-actividad',datos, this.httpOptions)
+
+  obtenerCargos(): Observable<any[]> {
+    return this.http.post<Empleado[]>(this.baseurl + 'obtener-cargos', null, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)
       );
   }
-  registrarContactoCliente(data: ContactoCliente):Observable<ContactoCliente>{
-    return this.http.post<ContactoCliente>(this.baseurl + 'insertar-contacto-cliente',data, this.httpOptions)
+
+  insertarEmpleado(empleado: Empleado): Observable<Empleado> {
+    return this.http.post<Empleado>(this.baseurl + 'insertar-empleado', empleado, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)
       );
   }
-  registrarCliente(data: Cliente):Observable<Cliente>{
-    return this.http.post<Cliente>(this.baseurl + 'insertar-cliente',data, this.httpOptions)
+
+  buscarProyectos(filtros: FiltrosBP): Observable<FiltrosBP[]> {
+    return this.http.post<FiltrosBP[]>(this.baseurl + 'busqueda-proyectos', filtros, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)
       );
   }
-  login(datos: Empleado):Observable<Empleado>{
-    return this.http.post<Empleado>(this.baseurl+'validar-login',datos, this.httpOptions)
-    .pipe(
-      retry(1),
-      catchError(this.errorHandl)
-    );
+
+  obtenerClientes(): Observable<Cliente[]> {
+    return this.http.post<Cliente[]>(this.baseurl + 'obtener-clientes', null, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
+
+  insertarProyecto(datos: Datos): Observable<Datos> {
+    return this.http.post<Datos>(this.baseurl + 'insertar-proyecto', datos, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
+
+  actualizarActividad(datos: Actividad): Observable<Actividad> {
+    return this.http.post<Actividad>(this.baseurl + 'actualizar-actividad', datos, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
+
+  registrarContactoCliente(data: ContactoCliente): Observable<ContactoCliente> {
+    return this.http.post<ContactoCliente>(this.baseurl + 'insertar-contacto-cliente', data, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
+
+  registrarCliente(data: Cliente): Observable<Cliente> {
+    return this.http.post<Cliente>(this.baseurl + 'insertar-cliente', data, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
+
+  login(datos: Empleado): Observable<Empleado> {
+    return this.http.post<Empleado>(this.baseurl + 'validar-login', datos, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
 }
