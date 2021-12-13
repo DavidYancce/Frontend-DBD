@@ -9,6 +9,24 @@ import { stringify } from '@angular/compiler/src/util';
   styleUrls: ['./empleado.component.scss'],
 })
 export class EmpleadoComponent implements OnInit {
+  dataUsuario : Empleado ={
+    dni: '',
+    nombre1: '',
+    nombre2: '',
+    apellidoPaterno: '',
+    apellidoMaterno: '',
+    nombreCompleto: '',
+    correoEmpresarial: '',
+    contrasenia: '',
+    telefono: '',
+    genero: '',
+    estado: '',
+    direccion: '',
+    fechaNacimiento: '',
+    idCargo: 0,
+    sueldo: 0
+  };
+  cargoHere = 0;
   filtro: FiltrosBE = {
     dni: '',
     nombreCompleto: '',
@@ -38,6 +56,8 @@ export class EmpleadoComponent implements OnInit {
   constructor(private service: ApiService) {}
 
   ngOnInit(): void {
+    this.dataUsuario = JSON.parse(localStorage.getItem('usuario')||'')
+    this.cargoHere=this.dataUsuario.idCargo;
     this.service.obtenerCargos().subscribe((data) => {
       this.listaCargos = data;
       console.log(data);
@@ -61,7 +81,7 @@ export class EmpleadoComponent implements OnInit {
     this.service.insertarEmpleado(this.empleado).subscribe(data => {
       console.log(data)
     });
-   
+
   }
   obtenerOperarios():void {
     this.service.obtenerOperarios().subscribe(data => {

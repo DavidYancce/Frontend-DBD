@@ -30,6 +30,7 @@ export class RegistroHorasComponent implements OnInit {
     sueldo: 0
   };
   dniHere = "";
+  cargoHere = 0;
   listaActividades: Actividad[] = [];
   listaProyectos: Proyecto[] = [];
   regsActividad: RegTablaAct[] = [];
@@ -89,6 +90,7 @@ export class RegistroHorasComponent implements OnInit {
   ngOnInit(): void {
     this.dataUsuario = JSON.parse(localStorage.getItem('usuario')||'')
     this.dniHere=this.dataUsuario.dni;
+    this.cargoHere=this.dataUsuario.idCargo;
     console.log(this.dniHere);
     this.obtenerProyectos();
     this.obtenerRegsActividad();

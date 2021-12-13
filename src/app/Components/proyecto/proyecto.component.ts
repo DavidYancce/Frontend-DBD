@@ -10,6 +10,24 @@ import {Empleado, Proyecto, FiltrosBP, Cliente, LineaNegocio, Datos, ContactoCli
   styleUrls: ['./proyecto.component.scss']
 })
 export class ProyectoComponent implements OnInit {
+  dataUsuario : Empleado ={
+    dni: '',
+    nombre1: '',
+    nombre2: '',
+    apellidoPaterno: '',
+    apellidoMaterno: '',
+    nombreCompleto: '',
+    correoEmpresarial: '',
+    contrasenia: '',
+    telefono: '',
+    genero: '',
+    estado: '',
+    direccion: '',
+    fechaNacimiento: '',
+    idCargo: 0,
+    sueldo: 0
+  };
+  cargoHere = 0;
   listaJefes: Empleado[] = [];
   listaOperarios: Empleado[] = [];
   listaProyectos: Proyecto[] = [];
@@ -83,6 +101,8 @@ export class ProyectoComponent implements OnInit {
   constructor(private service: ApiService) { }
 
   ngOnInit(): void {
+    this.dataUsuario = JSON.parse(localStorage.getItem('usuario')||'')
+    this.cargoHere=this.dataUsuario.idCargo;
     this.obtenerJefesProyecto(),
     this.obtenerOperarios(),
     this.obtenerProyectos(),
