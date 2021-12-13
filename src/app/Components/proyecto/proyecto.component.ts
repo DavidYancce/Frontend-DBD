@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../../ApiService";
-import {Empleado, Proyecto, FiltrosBP, Cliente, LineaNegocio, Datos, ContactoCliente} from "../../model";
+import {Empleado, Proyecto, FiltrosBP, Cliente, LineaNegocio, Datos, ContactoCliente, EmpleadoXProyecto} from "../../model";
 
 
 
@@ -23,7 +23,7 @@ export class ProyectoComponent implements OnInit {
     razonSocial: '',
     estadoProyecto: '',
     idProyecto: 0
-  }
+  };
   dataProyecto: Datos ={
     idProyecto: 0,
     idLinea: 0,
@@ -32,19 +32,53 @@ export class ProyectoComponent implements OnInit {
     fechaInicio: '',
     fechaFin: '',
     dni: ''
-  }
+  };
   dataCliente: Cliente ={
     ruc: '',
     razonSocial: '',
     pais: '',
     direccion: ''
-  }
+  };
   dataContactoCliente: ContactoCliente ={
     nombreCompleto: '',
     telefono: '',
     correoElectronico: '',
     direccion: '',
     ruc: ''
+  };
+  dataEmpleadoXProyecto: EmpleadoXProyecto ={
+    DNI: '',
+    idProyecto: 0,
+    rol: '',
+    descripcion: ''
+  };
+  rol = "";
+  descripcion = "";
+  proyectoSeleccionado: Proyecto = {
+    idProyecto: 0,
+    idLinea: 0,
+    estado: "",
+    nombreProyecto: "",
+    RUC: "",
+    fechaInicio: "",
+    fechaFin: ""
+  };
+  empleadoSeleccionado: Empleado = {
+    dni : '',
+    nombre1 : '',
+    nombre2 : '',
+    apellidoPaterno : '',
+    apellidoMaterno : '',
+    nombreCompleto : '',
+    correoEmpresarial : '',
+    contrasenia : '',
+    telefono : '',
+    genero : '',
+    estado : '',
+    direccion : '',
+    fechaNacimiento : '',
+    idCargo : 0,
+    sueldo : 0
   }
   constructor(private service: ApiService) { }
 
@@ -107,5 +141,16 @@ export class ProyectoComponent implements OnInit {
     this.service.registrarCliente(this.dataCliente).subscribe(data=>{
       console.log(data)
     })
+  }
+  registrarEmpleadoXProyecto():void{
+    let empleadoxproyecto: EmpleadoXProyecto ={
+      idProyecto: this.proyectoSeleccionado.idProyecto,
+      DNI: this.empleadoSeleccionado.dni,
+      rol: this.rol,
+      descripcion: this.descripcion
+    }
+    this.service.insertarEmpleadoXProyecto(empleadoxproyecto).subscribe((data) =>{
+      this.dataEmpleadoXProyecto = data;
+    });
   }
 }

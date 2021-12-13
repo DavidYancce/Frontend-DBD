@@ -12,7 +12,7 @@ import {
   RegHorasXProyecto, RegPlanVSRep,
   RegTablaEmp,
   FiltrosBP,
-  Cliente, Datos, ContactoCliente, FiltroEmpleadoProyecto, RegTablaAct
+  Cliente, Datos, ContactoCliente, FiltroEmpleadoProyecto, RegTablaAct, EmpleadoXProyecto
 
 } from "./model";
 @Injectable({
@@ -216,6 +216,13 @@ export class ApiService {
   }
   obtenerRegsActividad(data: Empleado): Observable<RegTablaAct[]> {
     return this.http.post<RegTablaAct[]>(this.baseurl + 'obtener-registros-actividad', data, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
+  insertarEmpleadoXProyecto(data: EmpleadoXProyecto):Observable<EmpleadoXProyecto> {
+    return this.http.post<EmpleadoXProyecto>(this.baseurl + 'insertar-empleados-proyecto', data, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)

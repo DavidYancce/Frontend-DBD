@@ -123,3 +123,9 @@ export class RegTablaAct {
   descripcion = "";
   tiempoRequerido = 0;
 }
+export class EmpleadoXProyecto{
+  DNI = "";
+  idProyecto = 0;
+  rol = "";
+  descripcion = "";
+}
