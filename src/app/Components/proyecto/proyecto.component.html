@@ -63,7 +63,7 @@
     </div>
   </div>
   <div>
-    <table class="table">
+    <table class="table" id="scroll">
       <thead class="table-dark">
       <tr>
         <th scope="col">Nombre del proyecto</th>
@@ -232,11 +232,11 @@
   aria-hidden="true"
 >
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="" style="font-weight: bold">
+    <div class="modal-content" style="border-radius: 20px">
+      <div class="modal-header" style="border-top-left-radius: 18px;border-top-right-radius: 17px; background: #007CAB;color: white">
+        <p class="modal-title" style="font-size: 18px">
           Asignar empleados a un proyecto
-        </h3>
+        </p>
         <ul class="block-options">
           <button
             type="button"
@@ -287,7 +287,7 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Cerrar
         </button>
-        <button type="button" class="btn btn-primary" (click)="registrarEmpleadoXProyecto()">Añadir</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="registrarEmpleadoXProyecto()">Añadir</button>
       </div>
     </div>
   </div>
