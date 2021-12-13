@@ -12,6 +12,24 @@ import {colors} from "@angular/cli/utilities/color";
   styleUrls: ['./registro-horas.component.scss'],
 })
 export class RegistroHorasComponent implements OnInit {
+  dataUsuario : Empleado ={
+    dni: '',
+    nombre1: '',
+    nombre2: '',
+    apellidoPaterno: '',
+    apellidoMaterno: '',
+    nombreCompleto: '',
+    correoEmpresarial: '',
+    contrasenia: '',
+    telefono: '',
+    genero: '',
+    estado: '',
+    direccion: '',
+    fechaNacimiento: '',
+    idCargo: 0,
+    sueldo: 0
+  };
+  dniHere = "";
   listaActividades: Actividad[] = [];
   listaProyectos: Proyecto[] = [];
   regsActividad: RegTablaAct[] = [];
@@ -69,6 +87,9 @@ export class RegistroHorasComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.dataUsuario = JSON.parse(localStorage.getItem('usuario')||'')
+    this.dniHere=this.dataUsuario.dni;
+    console.log(this.dniHere);
     this.obtenerProyectos();
     this.obtenerRegsActividad();
   }
@@ -152,7 +173,7 @@ export class RegistroHorasComponent implements OnInit {
   }
   obtenerRegsActividad(): void{
     let empleado: Empleado ={
-      dni: '44131494',
+      dni: this.dniHere,
       nombre1: '',
       nombre2: '',
       apellidoPaterno: '',
