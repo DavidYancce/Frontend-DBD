@@ -55,7 +55,7 @@
   <div class="modal-dialog">
     <div class="modal-content" style="border-radius: 20px">
       <div class="modal-header" style="border-top-left-radius: 18px;border-top-right-radius: 17px; background: #007CAB;color: white">
-        <p class="modal-title" style="font-size: 18px">Registrar horas</p>
+        <p class="modal-title" style="font-size: 18px">Registrar Horas</p>
         <ul class="block-options">
           <button
             type="button"
@@ -134,6 +134,7 @@
           <button *ngIf="this.actividadSeleccionada.planificado==null || this.actividadSeleccionada.planificado==0"
             type="button"
             class="btn btn-primary"
+            data-bs-dismiss="modal"
             (click)="registrarNoPlanificado()"
           >
             Registrar
@@ -231,7 +232,7 @@
           >
             Cerrar
           </button>
-          <button type="button" class="btn btn-primary" (click)="registrarPlanificado()" > Registrar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="registrarPlanificado()" > Registrar</button>
         </div>
       </div>
     </div>
