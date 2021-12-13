@@ -105,3 +105,10 @@ export class Datos {
   fechaFin:string='';
   dni:string='';
 }
+export class ContactoCliente {
+  ruc = "";
+  nombreCompleto = "";
+  telefono = "";
+  correoElectronico = "";
+  direccion = "";
+}
