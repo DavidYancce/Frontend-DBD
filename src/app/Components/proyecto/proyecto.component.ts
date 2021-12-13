@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../../ApiService";
-import {Empleado, Proyecto,FiltrosBP, Cliente, LineaNegocio ,Datos} from "../../model";
+import {Empleado, Proyecto, FiltrosBP, Cliente, LineaNegocio, Datos, ContactoCliente} from "../../model";
 
 
 
@@ -33,7 +33,19 @@ export class ProyectoComponent implements OnInit {
     fechaFin: '',
     dni: ''
   }
-
+  dataCliente: Cliente ={
+    ruc: '',
+    razonSocial: '',
+    pais: '',
+    direccion: ''
+  }
+  dataContactoCliente: ContactoCliente ={
+    nombreCompleto: '',
+    telefono: '',
+    correoElectronico: '',
+    direccion: '',
+    ruc: ''
+  }
   constructor(private service: ApiService) { }
 
   ngOnInit(): void {
@@ -69,19 +81,29 @@ export class ProyectoComponent implements OnInit {
   obtenerLineasNegocio():void{
     this.service.obtenerLineas().subscribe(data=>{
       this.listaLineaNegocios=data;
-      console.log(data)
     })
   }
   buscarProyectos():void{
     this.service.buscarProyectos(this.filtros).subscribe(data=>{
       this.listaProyectosFiltrados=data;
-      console.log(this.filtros)
-      console.log(data)
     })
   }
   insertarProyecto():void{
     console.log(this.dataProyecto)
     this.service.insertarProyecto(this.dataProyecto).subscribe(data=>{
+      console.log(data)
+    })
+  }
+  registrarContactoCliente():void{
+    this.dataContactoCliente.ruc = this.dataCliente.ruc,
+    console.log(this.dataContactoCliente)
+    this.service.registrarContactoCliente(this.dataContactoCliente).subscribe(data=>{
+      console.log(data)
+    })
+  }
+  registrarCliente():void{
+    console.log(this.dataCliente)
+    this.service.registrarCliente(this.dataCliente).subscribe(data=>{
       console.log(data)
     })
   }

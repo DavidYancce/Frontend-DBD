@@ -14,16 +14,28 @@ export class RegistroHorasComponent implements OnInit {
   listaActividades: Actividad[] = [];
   listaProyectos: Proyecto[] = [];
   actividadPlanReg: Actividad = {
-    fechaIngresada: 'this.fechaIngresada',
+    fechaIngresada: '',
     tiempoRequerido: 0,
     descripcion: '',
     idProyecto: 0,
-    dniEjecutor: '44131494', //cambiar por el de localstorage
+    dniEjecutor: '43373869', //cambiar por el de localstorage
     dniPlanificador: '',
     fechaPlanificada: '',
     tiempoPlanificado: 0,
     idActividad: 0,
     planificado: 1
+  }
+  actividadSeleccionada: Actividad = {
+    fechaIngresada: '',
+    tiempoRequerido: 0,
+    descripcion: '',
+    idProyecto: 0,
+    dniEjecutor: '43373869', //cambiar por el de localstorage
+    dniPlanificador: '',
+    fechaPlanificada: '',
+    tiempoPlanificado: 0,
+    idActividad: 0,
+    planificado: 0
   }
   idProyecto: number = 0;
   idActividad: number = 0;
@@ -67,7 +79,7 @@ export class RegistroHorasComponent implements OnInit {
 
   registrarNoPlanificado(): void {
     const data: Actividad = new Actividad();
-    data.descripcion=this.descripcion
+    data.descripcion=this.actividadSeleccionada.descripcion
     data.dniEjecutor='44131494' //cambiar por el de localstorage
     data.idProyecto=this.idProyecto
     data.idActividad=this.idActividad
@@ -109,17 +121,18 @@ export class RegistroHorasComponent implements OnInit {
     let actividad: Actividad ={
       fechaIngresada: this.fechaIngresada,
       tiempoRequerido: this.tiempoRequerido,
-      descripcion: this.descripcion,
+      descripcion: this.actividadSeleccionada.descripcion,
       idProyecto: this.idProyecto,
-      dniEjecutor: '44131494', //cambiar por el de localstorage
+      dniEjecutor: '43373869', //cambiar por el de localstorage
       dniPlanificador: '',
       fechaPlanificada: '',
       tiempoPlanificado: 0,
-      idActividad: this.idActividad,
+      idActividad: this.actividadSeleccionada.idActividad,
       planificado: 1
     }
     this.service.actualizarActividad(actividad).subscribe((data)=>{
       this.actividadPlanReg = data;
+      console.log(this.actividadPlanReg)
     });
   }
 }

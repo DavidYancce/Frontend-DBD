@@ -282,7 +282,7 @@
               <div class="input-group mb-3">
                 <span class="input-group-text">Proyecto</span>
                 <select [(ngModel)]="proyectoSeleccionado" class="form-select">
-                  <option selected>Elija una opción...</option>
+                  <option [value]="" selected>Elija una opción...</option>
                   <option *ngFor="let item of listaProyectos" [ngValue]="item">{{item.nombreProyecto}}</option>
                 </select>
               </div>
