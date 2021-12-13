@@ -80,7 +80,7 @@ export class ProyectoComponent implements OnInit {
     })
   }
   insertarProyecto():void{
-    console.log(this.dataProyecto)
+    console.log("hola")
     this.service.insertarProyecto(this.dataProyecto).subscribe(data=>{
       console.log(data)
     })
