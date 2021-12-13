@@ -9,23 +9,6 @@ import { Empleado } from '../../model';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  empleado: Empleado = {
-    dni: '',
-    nombre1: '',
-    nombre2: '',
-    apellidoPaterno: '',
-    apellidoMaterno: '',
-    nombreCompleto: '',
-    correoEmpresarial: '',
-    contrasenia: '',
-    telefono: '',
-    genero: '',
-    estado: 'Contratado',
-    direccion: '',
-    fechaNacimiento: '',
-    idCargo: 0,
-    sueldo: 0,
-  };
   datos_login: Empleado = {
     dni: '',
     nombre1: '',
@@ -50,32 +33,15 @@ export class LoginComponent implements OnInit {
   }
 
   validar(): void {
-    let empleado_ingresado : Empleado= {
-      correoEmpresarial: this.empleado.correoEmpresarial,
-      contrasenia: this.empleado.contrasenia,
-      dni: '',
-      nombre1: '',
-      nombre2: '',
-      apellidoPaterno: '',
-      apellidoMaterno: '',
-      nombreCompleto: '',
-      telefono: '',
-      genero: '',
-      estado: 'Contratado',
-      direccion: '',
-      fechaNacimiento: '',
-      idCargo: 0,
-      sueldo: 0,
-    };
-    this.service.login(empleado_ingresado).subscribe((data) => {
-      this.datos_login = data;
+    this.service.login(this.datos_login).subscribe((data) => {
+      console.log(data);
+      if (data.dni != '') {
+        location.assign(''); //this.url+'login'
+      }
+      else{
+        console.log("No ingresaste") //this.url+''
+      }
     });
-    if (this.datos_login.dni == '') {
-      location.assign('login'); //this.url+'login'
-    }
-    else{
-      location.assign(''); //this.url+''
-    }
   }
 
 }
