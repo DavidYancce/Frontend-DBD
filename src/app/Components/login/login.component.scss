@@ -17,13 +17,13 @@
 }
 @media screen and (max-width: 767px) {
   .wrapper-home {
-    background: url('./../../../assets/img/fondo-login.jpg') top center no-repeat;
+    background: url('./../../../assets/img/fondo-login-mobile.PNG') top center no-repeat;
     background-size: cover;
   }
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 270px) {
   .wrapper-home {
-    background: url('./../../../assets/img/fondo-login.jpg') top center no-repeat;
+    background: url('./../../../assets/img/fondo-login-mobile.PNG') top center no-repeat;
     background-size: cover;
   }
 }
