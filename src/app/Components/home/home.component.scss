@@ -1,23 +1,14 @@
+
 .bg-fondo{
-  background: url(./../../../assets/img/FondoHome.jpg) no-repeat center center;
-  min-height: 30%;
-  min-width: 100%;
-  background-size:100%;
-  width: 100%;
-  height: auto;
-  position: fixed;
-  left: 0;
+  background: url(./../../../assets/img/FondoHome.jpg) center center  ;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
 .panel {
   background: white;
-  min-height: 30%;
-  min-width: 100%;
-  background-size:100%;
-  width: 100%;
-  height: auto;
-  position: fixed;
-  left: 0;
 }
+
 .piepagina {
   background: #034964;
   min-height: 10%;
@@ -30,24 +21,8 @@
   width:100%;
 }
 
-body{
-  margin: 0;
-  padding: 0;
-}
-.container{
-  position: absolute;
-  width: 1680px;
-  height: 300px;
-  margin: 285px auto;
-  margin-left: 130px;
-}
-.container .box{
-  position: relative;
-  width: calc(500px - 30px);
-  height: calc(450px - 30px);
+.box{
   background: white;
-  float: left;
-  margin: 40px;
   box-sizing: border-box;
   overflow: hidden;
   border-radius: 10px;
@@ -64,23 +39,32 @@ body{
   padding: 1em 0 1em 0;
 }
 .cont-blue{
-  display: flex;
   align-items: center;
   justify-content: center;
   color: white;
+  border-radius: 20px 20px 0 0;
   text-align: center;
   padding: 0.5em 0.5em 0.5em 0.5em;
   font-size: 1.8em;
   line-height: normal;
-  height: 100px
 }
 .anuncio{
-  display: flex;
   align-items: center;
   justify-content: center;
   text-align: justify;
-  padding: 7.5em 1em 1em 1em;
+  padding: 1em 1em 1em 1em;
   font-size: 1.2em;
   line-height: normal;
-  height: 100px
+  border-radius: 0 0 20px 20px;
+}
+
+.footer{
+  position: fixed;
+  left: 0;   bottom: 0;   width: 100%;   background-color: #034964;   color: white;   text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .footer{
+    margin-top: 45px;
+  }
 }
