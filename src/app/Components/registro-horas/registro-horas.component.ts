@@ -96,11 +96,7 @@ export class RegistroHorasComponent implements OnInit {
     this.obtenerProyectos();
     this.obtenerRegsActividad();
   }
-  //obtenerActividades(): void {
-  //  this.service.obtenerActividades().subscribe((data) => {
-  //    this.listaActividades = data;
-  //  });
-  //}
+
   obtenerProyectos(): void {
     this.service.obtenerProyectos().subscribe((data) => {
       this.listaProyectos = data;
@@ -166,12 +162,12 @@ export class RegistroHorasComponent implements OnInit {
       console.log(this.actividadPlanReg)
     });
   }
-  actividadesXEmpleadoXProyecto(): void{
+  obtenerActividades(): void{
     let parametros: FiltroEmpleadoProyecto ={
       idProyecto: this.parametrosInput.idProyecto,
       dniEmpleado: this.parametrosInput.dniEmpleado
     }
-    this.service.actividadesXEmpleadoXProyecto(parametros).subscribe((data)=>{
+    this.service.obtenerActividades(parametros).subscribe((data)=>{
       this.listaActividades = data;
     });
   }

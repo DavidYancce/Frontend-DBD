@@ -65,8 +65,8 @@ export class ApiService {
       );
   }
 
-  obtenerActividades(): Observable<Actividad[]> {
-    return this.http.post<Actividad[]>(this.baseurl + 'obtener-actividades', this.httpOptions)
+  obtenerActividades(data: FiltroEmpleadoProyecto): Observable<Actividad[]> {
+    return this.http.post<Actividad[]>(this.baseurl + 'obtener-actividades', data, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)
@@ -207,13 +207,7 @@ export class ApiService {
         catchError(this.errorHandl)
       );
   }
-  actividadesXEmpleadoXProyecto(datos: FiltroEmpleadoProyecto): Observable<Actividad[]> {
-    return this.http.post<Actividad[]>(this.baseurl + 'obtener-actividades-empleado-proyecto', datos, this.httpOptions)
-      .pipe(
-        retry(1),
-        catchError(this.errorHandl)
-      );
-  }
+
   obtenerRegsActividad(data: Empleado): Observable<RegTablaAct[]> {
     return this.http.post<RegTablaAct[]>(this.baseurl + 'obtener-registros-actividad', data, this.httpOptions)
       .pipe(
