@@ -110,9 +110,9 @@ export class RegistroHorasComponent implements OnInit {
   registrarNoPlanificado(): void {
     const data: Actividad = new Actividad();
     data.descripcion=this.actividadSeleccionada.descripcion
-    data.dniEjecutor='44131494' //cambiar por el de localstorage
-    data.idProyecto=this.idProyecto
-    data.idActividad=this.idActividad
+    data.dniEjecutor=this.dniHere //cambiar por el de localstorage
+    data.idProyecto=this.parametrosInput.idProyecto
+    data.idActividad=this.actividadSeleccionada.idActividad
     data.tiempoRequerido=this.tiempoRequerido
     data.fechaIngresada = this.fechaIngresada
     this.service.registrarHoras(data).subscribe(data=>{
